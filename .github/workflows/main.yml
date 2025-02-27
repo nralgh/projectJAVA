@@ -21,3 +21,4 @@ jobs:
 
     - name: Run Java program
       run: java Main
+Systtem.out.print("n");
