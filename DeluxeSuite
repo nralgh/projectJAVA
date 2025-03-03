@@ -1,0 +1,27 @@
+public class DeluxeSuite extends Suite{
+	
+private int numOfMoreRooms ;
+private boolean hasBalacony;
+
+public DeluxeSuite(int RoomNo , double price ,int morebeds , boolean windowView ,int numOfMoreRooms ,boolean hasBalacony ) {
+	super(RoomNo , price , morebeds , windowView );
+	this.numOfMoreRooms=numOfMoreRooms;
+	this.hasBalacony=hasBalacony;
+	
+}
+public double calculatePrice() {
+	double totalPrice=super.calculatePrice();
+	totalPrice= totalPrice +(450  * numOfMoreRooms);
+	
+	if(hasBalacony==true)
+		totalPrice= totalPrice + 50;
+		
+	return totalPrice ;
+}
+
+
+public String toString() {
+	return super.toString()+"\n number of  of extra rooms is : "+ numOfMoreRooms ; 
+}
+
+}
