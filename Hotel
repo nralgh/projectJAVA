@@ -98,7 +98,7 @@ public class Hotel {
 		Room [] list=new Room[numOfRooms];
 		int j=0 ;
 		for (int i=0;i<numOfRooms;i++) {
-			if(roomList[i].getAvailable() )
+			if(roomList[i].isAvailable() )
 				list[j++]= roomList[i];
 			return list;}
 		
