@@ -1,0 +1,51 @@
+public class Booking {
+	private String name ;
+	private String phoneNumber;
+	private String ID;
+	private Room room;
+	private int numOfDays;
+	private int bill;
+	
+	public Booking (String name, String phoneNumber, String ID) {
+		this.name =name;
+		this.phoneNumber= phoneNumber;
+		this.ID=ID;	}
+public Booking (Booking B) {
+	this.name = B.name;
+	this.phoneNumber= B.phoneNumber;
+	this.ID =B.ID;
+	this.numOfDays= B.numOfDays;
+	this.room= B.room;
+	this.bill=B.bill;
+	
+		
+	
+	
+}
+public void checkIn(Room R ,int days) {
+	numOfDays= days;
+	room= R;
+	room.setAvailable(false);
+bill= numOfDays *room.calculatePrice();
+	
+}
+public void checkout() {
+	if (room.getAvailable==true)
+		System.out.println("The room has already been checked out");
+	else {
+		room.setAvailable(true)
+		System.out.println("check-out sucessful, Thank you for staying with us!")
+		
+	}
+	
+	
+}
+
+	public String toString() {
+		return "Customer Name: "+name + 	"  ID "+ID +
+				"\n Customer phone number "+ 
+	 "\n Room"+ room + "    Number of Days" + numOfDays + "the bill"+ bill;
+	}
+	
+}
+
