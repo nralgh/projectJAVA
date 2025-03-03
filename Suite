@@ -1,0 +1,25 @@
+public class Suite extends Room {
+
+	
+	private int morebeds;
+	private boolean windowView;
+	
+	
+	public Suite(  int RoomNo , double price ,int morebeds , boolean windowView  ) {
+		super(RoomNo,price);
+		this.morebeds=morebeds;
+		this.windowView=windowView;
+	}
+	
+	public String toString() {
+		return super.toString()+"\n the number of extra beds :"+morebeds+(windowView ? " \n is there a fabulous view ! ": " good veiw");
+	}
+	
+	public double calculatePrice() {
+		double totalPrice = price ;
+		
+		if (windowView==true)
+			totalPrice=totalPrice + 175;
+		return totalPrice;
+	}
+}
