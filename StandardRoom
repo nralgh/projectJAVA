@@ -1,0 +1,21 @@
+public class StandardRoom  extends Room{
+private String Kind;
+
+public StandardRoom(int RoomNum , String Kind ,double price ) {
+	super(RoomNum , price );
+	this.Kind=Kind;
+}
+ public String toString() {
+	 return super.toString()+"\n the room kind is : "+Kind ;
+ }
+ 
+public double calculatePrice() {
+	double totalPrice=0; 
+	
+	if(Kind.equalsIgnoreCase("Double"))
+	totalPrice=price+500;
+	else
+		totalPrice=price;
+	
+	return totalPrice;
+}
