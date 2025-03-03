@@ -1,0 +1,53 @@
+public class  ExecutiveSuite extends Suite {
+	
+	private String meetingRoomSize;
+	
+	public ExecutiveSuite (int RoomNo ,int morebeds , boolean windowView, double price , String meetingRoomSize) {
+		super(RoomNo , price , morebeds , windowView);
+		this.meetingRoomSize=meetingRoomSize;
+	}
+	
+	public double calulatePrice() {
+		double totalPrice=super.calculatePrice();
+		if(meetingRoomSize.equalsIgnoreCase("big"))
+			totalPrice=totalPrice+130;
+		else
+			if(meetingRoomSize.equalsIgnoreCase("medium"))
+				totalPrice=totalPrice+90;
+				else 
+					totalPrice=totalPrice+ 50;
+		
+		return totalPrice;
+					
+					
+	}
+	
+	public String toString() {
+		return super.toString()+"\n the meeting room size for the Executive Suite is :"+meetingRoomSize;
+	} extends Suite {
+	
+	private String meetingRoomSize;
+	
+	public ExecutiveSuite (int RoomNo ,int morebeds , boolean windowView, double price , String meetingRoomSize) {
+		super(RoomNo , price , morebeds , windowView);
+		this.meetingRoomSize=meetingRoomSize;
+	}
+	
+	public double calulatePrice() {
+		double totalPrice=super.calculatePrice();
+		if(meetingRoomSize.equalsIgnoreCase("big"))
+			totalPrice=totalPrice+130;
+		else
+			if(meetingRoomSize.equalsIgnoreCase("medium"))
+				totalPrice=totalPrice+90;
+				else 
+					totalPrice=totalPrice+ 50;
+		
+		return totalPrice;
+					
+					
+	}
+	
+	public String toString() {
+		return super.toString()+"\n the meeting room size for the Executive Suite is :"+meetingRoomSize;
+	}
