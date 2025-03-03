@@ -1,0 +1,46 @@
+public abstract class Room {
+private int RoomNum;
+private boolean available ;
+protected double price ;
+
+
+public Room(int RoomNum , double price ) {
+	this.RoomNum = RoomNum;
+	this.price=price;
+	available=true;
+}
+
+public abstract double calculatePrice();
+
+public String toString() {
+	return "the room number is :"+RoomNum+" , Available =";
+}
+
+public int getRoomNum() {
+	return RoomNum;
+}
+
+public void setRoomNum(int roomNum) {
+	RoomNum = roomNum;
+}
+
+public boolean isAvailable() {
+	return available;
+}
+
+public void setAvailable(boolean available) {
+	this.available = available;
+}
+
+public double getPrice() {
+	return price;
+}
+
+public void setPrice(double price) {
+	this.price = price;
+}
+
+
+
+
+}
