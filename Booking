@@ -45,6 +45,30 @@ public void checkout() {
 				"\n Customer phone number "+ 
 	 "\n Room"+ room + "    Number of Days" + numOfDays + "the bill"+ bill;
 	}
-	
+	public void setName(String name){
+this.name=name;
+}
+public String getName (){
+return name;
+}
+public void setID(String ID){
+this.ID=ID;
+}
+public String getID (){
+return ID;
+}
+public void setPhoneNumber(String phoneNumber){
+this.phoneNumber=phoneNumber;
+}
+public String getPhoneNumber (){
+return phoneNumber;
+}
+
+public void setRoom(Room room){
+this.room=room;
+}
+public String getRoom (){
+return room;
+}
 }
 
