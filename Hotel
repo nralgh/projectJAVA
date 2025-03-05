@@ -24,6 +24,23 @@ public class Hotel {
 			return true;}
 		return false;}
 	
+	public boolean deleteRoom(int no ) {
+		for (int i=0;i<numOfRooms;i++)
+		if (roomList[i].getRoomNum()==no) {
+			if(roomList[i].getAvailable()==true) {
+				for(int j=i;j<numOfRooms-1;j++)
+					roomList[j]=roomList[j+1];
+				numOfRooms--;
+				roomList[numOfRooms]=null;
+				return true;
+			}
+			else 
+				System.out.println("this room is booked !");
+			}
+			return false;
+		
+		
+	}
 	
 	public boolean addBooking(Booking B) {
 		if(numOfBooking<bookingList.length) {
@@ -49,13 +66,13 @@ public class Hotel {
 	public Booking findBooking (String id,int roomNum) {
 		for(int i=0;i<numOfBooking ;i++) {
 			if (bookingList[i].getID().equals(id)&&bookingList[i].getRoom().getRoomNum()==roomNum) 
-		return bookingList[i];
+		return bookingList[i];}
 			
 			return null;
 	}
 	
 	public Room findRoom (int RoomNo) {
-		for (int i=0 ;i<numOfRooms)
+		for (int i=0 ;i<numOfRooms;i++)
 			if (roomList[i].getRoomNum()==RoomNo)
 				return roomList[i];
 				
@@ -66,20 +83,20 @@ public class Hotel {
 	public StandardRoom[] getStandard() {
 		StandardRoom[] list=new StandardRoom[numOfRooms];
 		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) {
+		for (int i=0;i<numOfRooms;i++) 
 			if(roomList[i] instanceof StandardRoom )
 				list[j++]=(StandardRoom) roomList[i];
-			return list;}
-		}
+			return list;
+		
 	}
 	
 	public Suite[] getSuites() {
 		Suite [] list=new Suite[numOfRooms];
 		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) {
+		for (int i=0;i<numOfRooms;i++) 
 			if(roomList[i] instanceof Suite )
 				list[j++]=(Suite) roomList[i];
-			return list;}
+			return list;
 		}
 		
 	
@@ -87,20 +104,27 @@ public class Hotel {
 	public DeluxeSuite[] getSuite(int nOfMB) {
 		DeluxeSuite [] list=new DeluxeSuite[numOfRooms];
 		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) {
-			if(roomList[i] instanceof DeluxeSuite && ((DeluxeSuite) roomList[i]).getNumberOfMoreBeds()>=nOfMB)
+		for (int i=0;i<numOfRooms;i++) 
+			if(roomList[i] instanceof DeluxeSuite && ((DeluxeSuite) roomList[i]).getMoreRooms()>=nOfMB)
 				list[j++]=(DeluxeSuite) roomList[i];
-			return list;}
+			return list;
 		}
-		
+	public ExecutiveSuite[] getSuite(String meetingSize) {
+		ExecutiveSuite [] list=new ExecutiveSuite[numOfRooms];
+		int j=0 ;
+		for (int i=0;i<numOfRooms;i++) 
+			if(roomList[i] instanceof ExecutiveSuite && ((ExecutiveSuite) roomList[i]).getNumberOfMoreBeds().equalsIgnoreCase(meetingSize))
+				list[j++]=(DeluxeSuite) roomList[i];
+			return list;
+		}	
 	
 	public Room[] getAvailableRooms() {
 		Room [] list=new Room[numOfRooms];
 		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) {
+		for (int i=0;i<numOfRooms;i++) 
 			if(roomList[i].getAvailable() )
 				list[j++]= roomList[i];
-			return list;}
+			return list;
 		
 		
 	}
