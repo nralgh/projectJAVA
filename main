@@ -8,7 +8,7 @@ public class TestHotel {
 		
 		//int RoomNumber ,String kind ,double Price
 StandardRoom standard1=new StandardRoom (001,"Single",500.0);
-StandardRoom standard2=new StandardRoom (002,"Single",600.0);
+StandardRoom standard2=new StandardRoom (002,"Single",500.0);
 StandardRoom standard3=new StandardRoom (003,"double",700.0);	
 StandardRoom standard4=new StandardRoom (004,"double",700.0);
 
