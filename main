@@ -30,4 +30,38 @@ ExecutiveSuite executive2=new ExecutiveSuite(311,1,false,4000.0,"Big");
 ExecutiveSuite executive3=new ExecutiveSuite(411,1,true,4500.0,"Medium");
 	}
 
+
+
+//menu 
+int choice ; 
+		do {
+			System.out.println( "Welcome to the Hotel!, Select what do you need:");
+			System.out.println("1) Make a new booking");
+			System.out.println("2) Show room details ");
+			System.out.println("3) Cancel -check out booking");
+			System.out.println("4) Search for a booking");
+			System.out.println("5) Exit");
+			choice = input.nextInt ();
+			switch (choice) {
+			case 1 : 
+				makeNewBooking();
+				break;
+				
+			case 2:
+				showRoomInfo ();
+				break;
+			case 3:
+				cancelBooking();
+				break;
+			case 4 :
+				searchBooking ();
+			break;
+			case 5:
+				System.out.println("Thank you for using our system, Good bye!");
+				break;
+				default :
+					System.out.println(" Invalid option, please try again. ");
+					
+		}
+		}while (choice !=5);
 }
