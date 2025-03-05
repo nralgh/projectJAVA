@@ -12,7 +12,8 @@ public class Suite extends Room {
 	}
 	
 	public String toString() {
-		return super.toString()+"\n the number of extra beds :"+morebeds+(windowView ? " \n there is a fabulous view ! ": " there is a normal veiw");
+		return super.toString()+"\n the number of extra beds :"+morebeds+(windowView ? " \n is there a fabulous view ! ": " good veiw");
+	}
 	
 	public double calculatePrice() {
 		double totalPrice = price ;
@@ -20,5 +21,21 @@ public class Suite extends Room {
 		if (windowView==true)
 			totalPrice=totalPrice + 175;
 		return totalPrice;
+	}
+
+	public int getMorebeds() {
+		return morebeds;
+	}
+
+	public void setMorebeds(int morebeds) {
+		this.morebeds = morebeds;
+	}
+
+	public boolean isWindowView() {
+		return windowView;
+	}
+
+	public void setWindowView(boolean windowView) {
+		this.windowView = windowView;
 	}
 }
