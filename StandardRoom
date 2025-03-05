@@ -19,3 +19,16 @@ public double calculatePrice() {
 	
 	return totalPrice;
 }
+public String getKind() {
+	return Kind;
+}
+public void setKind(String kind) {
+	Kind = kind;
+}
+
+
+
+
+
+
+}
