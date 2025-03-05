@@ -24,7 +24,7 @@ public void setRoomNum(int roomNum) {
 	RoomNum = roomNum;
 }
 
-public boolean isAvailable() {
+public boolean getAvailable() {
 	return available;
 }
 
