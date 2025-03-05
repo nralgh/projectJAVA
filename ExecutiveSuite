@@ -1,4 +1,4 @@
-public class  ExecutiveSuite extends Suite {
+public class ExecutiveSuite extends Suite {
 	
 	private String meetingRoomSize;
 	
@@ -6,6 +6,7 @@ public class  ExecutiveSuite extends Suite {
 		super(RoomNo , price , morebeds , windowView);
 		this.meetingRoomSize=meetingRoomSize;
 	}
+	
 	
 	public double calulatePrice() {
 		double totalPrice=super.calculatePrice();
@@ -24,4 +25,16 @@ public class  ExecutiveSuite extends Suite {
 	
 	public String toString() {
 		return super.toString()+"\n the meeting room size for the Executive Suite is :"+meetingRoomSize;
-	} 
+	}
+
+
+	public String getMeetingRoomSize() {
+		return meetingRoomSize;
+	}
+
+
+	public void setMeetingRoomSize(String meetingRoomSize) {
+		this.meetingRoomSize = meetingRoomSize;
+	}
+
+}
