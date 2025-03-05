@@ -13,7 +13,7 @@ public Room(int RoomNum , double price ) {
 public abstract double calculatePrice();
 
 public String toString() {
-	return "the room number is :"+RoomNum+" , Available =";
+	return "the room number is :"+RoomNum+ ( available ? " the room is available ":"the room is not available ");
 }
 
 public int getRoomNum() {
@@ -24,7 +24,7 @@ public void setRoomNum(int roomNum) {
 	RoomNum = roomNum;
 }
 
-public boolean getAvailable() {
+public boolean isAvailable() {
 	return available;
 }
 
