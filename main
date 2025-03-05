@@ -64,4 +64,61 @@ int choice ;
 					
 		}
 		}while (choice !=5);
+
+public static void cancleBooking() {
+		System.out.println("\n Enter your Choice :");
+		System.out.println("1- Cancle reservation :");
+		System.out.println("2- Make checkout for reservation: ");
+		System.out.println("3- return to the main menu ");
+		int choice =input.nextInt();
+		switch(choice) {
+		case 1 :
+			System.out.println("Enter customer id :");
+			String id = input.next();
+			System.out.println("Enter room number :");
+			int num=input.nextInt();
+			
+			
+			if(hotel.cancelBooking(id, num ))
+				System.out.println("your reservation has been successfully canceled ! ");
+			
+			else
+				System.out.println("sorry ! , couldn't cancel your reservation");
+			break;
+		case 2 :
+			System.out.println("Enter customer id :");
+			 id = input.next();
+			System.out.println("Enter room number :");
+			 num=input.nextInt()
+			Booking B=hotel.findBooking(id , num );
+			 if(B==null)
+				 System.out.println("can't found this reservation ");
+			 else
+				 B.checkout();
+			 break;
+		case 3 : 
+			System.out.println("");
+			break;
+			default :
+				System.out.println(" invalid input");
+			
+			
+			
+		}
+		
+		
+	}
+	
+	public void findBooking() {
+		System.out.println("Enter customer id :");
+		String id = input.next();
+		System.out.println("Enter room number :");
+		int num=input.nextInt();
+		Booking B=hotel.findBooking(id , num );
+		if(B==null)
+			System.out.println("can't found this reservation");
+		else 
+			System.out.println(B.toString());
+	}
+
 }
