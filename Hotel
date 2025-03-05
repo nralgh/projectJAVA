@@ -114,7 +114,7 @@ public class Hotel {
 		int j=0 ;
 		for (int i=0;i<numOfRooms;i++) 
 			if(roomList[i] instanceof ExecutiveSuite && ((ExecutiveSuite) roomList[i]).getNumberOfMoreBeds().equalsIgnoreCase(meetingSize))
-				list[j++]=(DeluxeSuite) roomList[i];
+				list[j++]=(ExecutiveSuite) roomList[i];
 			return list;
 		}	
 	
