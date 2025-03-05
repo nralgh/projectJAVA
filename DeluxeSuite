@@ -23,5 +23,17 @@ public double calculatePrice() {
 public String toString() {
 	return super.toString()+"\n number of  of extra rooms is : "+ numOfMoreRooms ; 
 }
+public int getNumOfMoreRooms() {
+	return numOfMoreRooms;
+}
+public void setNumOfMoreRooms(int numOfMoreRooms) {
+	this.numOfMoreRooms = numOfMoreRooms;
+}
+public boolean isHasBalacony() {
+	return hasBalacony;
+}
+public void setHasBalacony(boolean hasBalacony) {
+	this.hasBalacony = hasBalacony;
+}
 
 }
