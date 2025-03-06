@@ -1,3 +1,5 @@
+package java113P1;
+
 
 import java.util.Scanner ;
 
@@ -28,7 +30,7 @@ DeluxeSuite deluxe2=new DeluxeSuite(112,3000.0,0,true,3,true);
 ExecutiveSuite executive1=new ExecutiveSuite(211,1,true,3500.0,"Small");
 ExecutiveSuite executive2=new ExecutiveSuite(311,1,false,4000.0,"Big");
 ExecutiveSuite executive3=new ExecutiveSuite(411,1,true,4500.0,"Medium");
-	}
+	
 
 
 
@@ -89,7 +91,7 @@ int choice ;
 					System.out.println ( "Enter the number of days for your stay: ") ;
 
 					int day = input.nextInt() ; 
-					book.CheckIn(r, day);
+					book.checkIn(r, day);
 					hotel.addBooking(book); 
 					System.out.println (  "Booking added successfully! Enjoy your stay!"); 
 					System.out.println (book.toString()) ;
@@ -121,7 +123,7 @@ public static void cancleBooking() {
 			System.out.println("Enter customer id :");
 			 id = input.next();
 			System.out.println("Enter room number :");
-			 num=input.nextInt()
+			 num=input.nextInt();
 			Booking B=hotel.findBooking(id , num );
 			 if(B==null)
 				 System.out.println("can't found this reservation ");
@@ -152,5 +154,65 @@ public static void cancleBooking() {
 		else 
 			System.out.println(B.toString());
 	}
+
+
+	
+	public static void showRoomInfo()
+	
+	{
+		System.out.println("Enter your choice:");
+		System.out.println("1-show Standard rooms");
+		System.out.println("2-show Suites");
+		System.out.println("3-show Deluxe Suites with number of extra rooms");//spicifce number of room?
+		System.out.println("4-show Executive Suites with the size of meeting room");
+		System.out.println("5-show all available rooms");
+		System.out.println("6-return ro main menue");
+		
+		int choice =input.nextInt();
+		
+		switch(choice) {
+		case 1:
+			StandardRoom[] list1 =hotel.getStandard();
+			for(int i=0;i<list1.length;i++)
+				if(list1[i]!=null) 
+					System.out.println(list1[i].toString());
+			break;
+		case 2:
+			Suite [] list2 =hotel.getSuites();
+			for(int i=0;i<list2.length;i++)
+				if(list2[i]!=null&&!(list2[i] instanceof DeluxeSuite)&&!(list2[i] instanceof ExecutiveSuite)) 
+					System.out.println(list2[i].toString());
+			break;
+		case 3:
+			System.out.println("Enter how many extra rooms:");
+			int numR=input.nextInt();
+			Suite [] list3 =hotel.getSuites(numR);
+			for(int i=0;i<list3.length;i++)
+				if(list3[i]!=null) 
+					System.out.println(list3[i].toString());
+			break;
+		case 4:
+			System.out.println("Enter the size of meeting room:");
+			String  meetingR=input.next();
+			Suite [] list4 =hotel.getSuites(numR);
+			for(int i=0;i<list4.length;i++)
+				if(list4[i]!=null) 
+					System.out.println(list4[i].toString());
+			break;
+		case 5:
+			Room [] list5 =hotel.getAvailableRooms();
+			for(int i=0;i<list5.length;i++)
+				if(list5[i]!=null) {
+					System.out.println(list5[i].getClass().getSimpleName());
+					System.out.println(list5[i].toString());
+		} break;
+		case 6:
+			System.out.println("Return to menue..");
+			break;
+			default:
+				System.out.println("invaild input !");
+		}
+	}
+	
 
 }
