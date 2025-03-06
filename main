@@ -30,18 +30,18 @@ DeluxeSuite deluxe2=new DeluxeSuite(112,3000.0,0,true,3,true);
 ExecutiveSuite executive1=new ExecutiveSuite(211,1,true,3500.0,"Small");
 ExecutiveSuite executive2=new ExecutiveSuite(311,1,false,4000.0,"Big");
 ExecutiveSuite executive3=new ExecutiveSuite(411,1,true,4500.0,"Medium");
-hotell.addRoom(standard1);
-hotell.addRoom(standard2);
-hotell.addRoom(standard3);
-hotell.addRoom(standard4);
-hotell.addRoom(suite1);
-hotell.addRoom(suite2);
-hotell.addRoom(suite3);
-hotell.addRoom(deluxe1);
-hotell.addRoom(deluxe2);
-hotell.addRoom(executive1);
-hotell.addRoom(executive2);
-hotell.addRoom(executive3);
+hotel.addRoom(standard1);
+hotel.addRoom(standard2);
+hotel.addRoom(standard3);
+hotel.addRoom(standard4);
+hotel.addRoom(suite1);
+hotel.addRoom(suite2);
+hotel.addRoom(suite3);
+hotel.addRoom(deluxe1);
+hotel.addRoom(deluxe2);
+hotel.addRoom(executive1);
+hotel.addRoom(executive2);
+hotel.addRoom(executive3);
 
 
 
