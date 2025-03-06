@@ -1,9 +1,11 @@
+package java113P1;
+
 public class ExecutiveSuite extends Suite {
 	
 	private String meetingRoomSize;
 	
-	public ExecutiveSuite (int RoomNo ,int morebeds , boolean windowView, double price , String meetingRoomSize) {
-		super(RoomNo , price , morebeds , windowView);
+	public ExecutiveSuite (int roomNo ,int moreBeds , boolean windowView, double price , String meetingRoomSize) {
+		super(roomNo , price , moreBeds , windowView);
 		this.meetingRoomSize=meetingRoomSize;
 	}
 	
