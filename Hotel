@@ -2,17 +2,17 @@ package java113P1;
 
 public class Hotel {
 	
-	private String HotelName;
+	private String hotelName;
 	 Room[] roomList;
 	 Booking[] bookingList;
 	private int numOfRooms;
 	private int numOfBooking;
 	
 	
-	public Hotel(String Name, int number) {
+	public Hotel(String name, int number) {
 		roomList=new Room[70];
 		bookingList=new Booking [number];
-		HotelName = Name;
+		hotelName = name;
 		numOfBooking = 0;
 		numOfRooms=0;
 	}
@@ -24,9 +24,9 @@ public class Hotel {
 			return true;}
 		return false;}
 	
-	public boolean deleteRoom(int no ) {
+	public boolean deleteRoom(int roomNum ) {
 		for (int i=0;i<numOfRooms;i++)
-		if (roomList[i].getRoomNum()==no) {
+		if (roomList[i].getRoomNum()==roomNum) {
 			if(roomList[i].isAvailable()==true) {
 				for(int j=i;j<numOfRooms-1;j++)
 					roomList[j]=roomList[j+1];
@@ -53,7 +53,7 @@ public class Hotel {
 		for(int i=0;i<numOfBooking ;i++) {
 			if (bookingList[i].getID().equals(id)&&bookingList[i].getRoom().getRoomNum()==roomNum)
 			{
-				bookingList[i].checkout();
+				bookingList[i].checkOut();
 				bookingList[i]=bookingList[numOfBooking-1];
 				numOfBooking--;
 				bookingList[numOfBooking]=null;
@@ -71,9 +71,9 @@ public class Hotel {
 			return null;
 	}
 	
-	public Room findRoom (int RoomNo) {
+	public Room findRoom (int roomNo) {
 		for (int i=0 ;i<numOfRooms;i++)
-			if (roomList[i].getRoomNum()==RoomNo)
+			if (roomList[i].getRoomNum()==roomNo)
 				return roomList[i];
 				
 				return null;
