@@ -65,6 +65,38 @@ int choice ;
 		}
 		}while (choice !=5);
 
+		public static void makeNewBooking() {
+			System.out.println("Enter Room Number:");
+			int number = input.nextInt();
+			Room r = hotel.findRoom(number);
+			if ( !r.isAvailable () ||  r==null ) {
+
+					System.out.println("This room is not available, please try another one");
+					    return;
+					}
+					System.out.println("Enter your full name: ");
+					input.nextLine ();
+					String name=input.nextLine();
+					System.out.println ("Enter phone number:");
+					input.nextLine ();
+					String pNumber=input.next();
+
+					System.out.println ("Enter your ID: ");
+					input.nextLine ();
+					String ID =input.next();
+
+					Booking book =new Booking ( name, pNumber, ID);
+					System.out.println ( "Enter the number of days for your stay: ") ;
+
+					int day = input.nextInt() ; 
+					book.CheckIn(r, day);
+					hotel.addBooking(book); 
+					System.out.println (  "Booking added successfully! Enjoy your stay!"); 
+					System.out.println (book.toString()) ;
+			
+		}
+		//--------------------------
+
 public static void cancleBooking() {
 		System.out.println("\n Enter your Choice :");
 		System.out.println("1- Cancle reservation :");
