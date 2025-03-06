@@ -79,7 +79,7 @@ int choice ;
 		}while (choice !=5);}
 
 		public static void makeNewBooking() {
-			System.out.println("Enter Room Number: (0001 - 002 -003 -004");
+			System.out.println("Enter Room Number: (0001 - 002 -003 -004)");
 			int number = input.nextInt();
 			Room r = hotel.findRoom(number);
 			if ( !r.isAvailable () ||  r==null ) {
@@ -91,11 +91,11 @@ int choice ;
 					input.nextLine ();
 					String name=input.nextLine();
 					System.out.println ("Enter phone number:");
-					input.nextLine ();
+					input.next();
 					String pNumber=input.next();
 
 					System.out.println ("Enter your ID: ");
-					input.nextLine ();
+					input.next();
 					String ID =input.next();
 
 					Booking book =new Booking ( name, pNumber, ID);
