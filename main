@@ -9,27 +9,27 @@ public class TestHotel {
 	public static void main(String[] args) {
 		
 		//int RoomNumber ,String kind ,double Price
-StandardRoom standard1=new StandardRoom (001,"Single",500.0);
-StandardRoom standard2=new StandardRoom (002,"Single",500.0);
-StandardRoom standard3=new StandardRoom (003,"double",700.0);	
-StandardRoom standard4=new StandardRoom (004,"double",700.0);
+StandardRoom standard1=new StandardRoom (01,"Single",500.0);
+StandardRoom standard2=new StandardRoom (02,"Single",500.0);
+StandardRoom standard3=new StandardRoom (03,"double",700.0);	
+StandardRoom standard4=new StandardRoom (04,"double",700.0);
 
 
 //int moreBeds,double price ,int roomNumber,boolean windowView
-Suite suite1= new Suite(0,1000.0 ,011,false);
-Suite suite2= new Suite(1,1500.0 ,012,true);
-Suite suite3= new Suite(2,2000.0 ,013,true);
+Suite suite1= new Suite(005,1000.0 ,011,false);
+Suite suite2= new Suite(006,1500.0 ,012,true);
+Suite suite3= new Suite(007,2000.0 ,013,true);
 
 
 //int roomNumber, double price,int moreBeds, boolean windowView ,int moreRooms,boolean hasBalcony
-DeluxeSuite deluxe1=new DeluxeSuite(111,2500.0,2,true,2,false);
-DeluxeSuite deluxe2=new DeluxeSuite(112,3000.0,0,true,3,true);
+DeluxeSuite deluxe1=new DeluxeSuite(108,2500.0,2,true,2,false);
+DeluxeSuite deluxe2=new DeluxeSuite(109,3000.0,0,true,3,true);
 
 
 //int roomNumber ,int moreBeds , boolean windowView, double price , String meetingRoomSize
-ExecutiveSuite executive1=new ExecutiveSuite(211,1,true,3500.0,"Small");
-ExecutiveSuite executive2=new ExecutiveSuite(311,1,false,4000.0,"Big");
-ExecutiveSuite executive3=new ExecutiveSuite(411,1,true,4500.0,"Medium");
+ExecutiveSuite executive1=new ExecutiveSuite(210,1,true,3500.0,"Small");
+ExecutiveSuite executive2=new ExecutiveSuite(211,1,false,4000.0,"Big");
+ExecutiveSuite executive3=new ExecutiveSuite(212,1,true,4500.0,"Medium");
 hotel.addRoom(standard1);
 hotel.addRoom(standard2);
 hotel.addRoom(standard3);
@@ -79,7 +79,7 @@ int choice ;
 		}while (choice !=5);}
 
 		public static void makeNewBooking() {
-			System.out.println("Enter Room Number: (0001 - 002 -003 -004)");
+			System.out.println("Enter Room Number: ");
 			int number = input.nextInt();
 			Room r = hotel.findRoom(number);
 			if ( !r.isAvailable () ||  r==null ) {
