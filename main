@@ -16,39 +16,28 @@ StandardRoom standard4=new StandardRoom (004,"double",700.0);
 
 
 //int moreBeds,double price ,int roomNumber,boolean windowView
-Suite suite1= new Suite(005,1000.0 ,011,false);
-Suite suite2= new Suite(006,1500.0 ,012,true);
-Suite suite3= new Suite(007,2000.0 ,013,true);
+Suite suite1= new Suite(0,1000.0 ,011,false);
+Suite suite2= new Suite(1,1500.0 ,012,true);
+Suite suite3= new Suite(2,2000.0 ,013,true);
 
 
 //int roomNumber, double price,int moreBeds, boolean windowView ,int moreRooms,boolean hasBalcony
-DeluxeSuite deluxe1=new DeluxeSuite(108,2500.0,2,true,2,false);
-DeluxeSuite deluxe2=new DeluxeSuite(109,3000.0,0,true,3,true);
+DeluxeSuite deluxe1=new DeluxeSuite(111,2500.0,2,true,2,false);
+DeluxeSuite deluxe2=new DeluxeSuite(112,3000.0,0,true,3,true);
 
 
 //int roomNumber ,int moreBeds , boolean windowView, double price , String meetingRoomSize
-ExecutiveSuite executive1=new ExecutiveSuite(210,1,true,3500.0,"Small");
-ExecutiveSuite executive2=new ExecutiveSuite(211,1,false,4000.0,"Big");
-ExecutiveSuite executive3=new ExecutiveSuite(212,1,true,4500.0,"Medium");
-hotel.addRoom(standard1);
-hotel.addRoom(standard2);
-hotel.addRoom(standard3);
-hotel.addRoom(standard4);
-hotel.addRoom(suite1);
-hotel.addRoom(suite2);
-hotel.addRoom(suite3);
-hotel.addRoom(deluxe1);
-hotel.addRoom(deluxe2);
-hotel.addRoom(executive1);
-hotel.addRoom(executive2);
-hotel.addRoom(executive3);
+ExecutiveSuite executive1=new ExecutiveSuite(211,1,true,3500.0,"Small");
+ExecutiveSuite executive2=new ExecutiveSuite(311,1,false,4000.0,"Big");
+ExecutiveSuite executive3=new ExecutiveSuite(411,1,true,4500.0,"Medium");
+	}
 
 
 
 //menu 
 int choice ; 
 		do {
-			System.out.println( "Welcome to the Holiday Hotel!, Select what do you need:");
+			System.out.println( "Welcome to the Hotel!, Select what do you need:");
 			System.out.println("1) Make a new booking");
 			System.out.println("2) Show room details ");
 			System.out.println("3) Cancel -check out booking");
@@ -67,7 +56,7 @@ int choice ;
 				cancelBooking();
 				break;
 			case 4 :
-				findBooking ();
+				searchBooking ();
 			break;
 			case 5:
 				System.out.println("Thank you for using our system, Good bye!");
@@ -76,59 +65,27 @@ int choice ;
 					System.out.println(" Invalid option, please try again. ");
 					
 		}
-		}while (choice !=5);}
+		}while (choice !=5);
 
-		public static void makeNewBooking() {
-			System.out.println("Enter Room Number: ");
-			int number = input.nextInt();
-			Room r = hotel.findRoom(number);
-			if ( !r.isAvailable () ||  r==null ) {
-
-					System.out.println("This room is not available, please try another one");
-					    return;
-					}
-					System.out.println("Enter your full name: ");
-					input.nextLine ();
-					String name=input.nextLine();
-					System.out.println ("Enter phone number:");
-				
-					String pNumber=input.next();
-
-					System.out.println ("Enter your ID: ");
-				
-					String ID =input.next();
-
-					Booking book =new Booking ( name, pNumber, ID);
-					System.out.println ( "Enter the number of days for your stay: ") ;
-
-					int day = input.nextInt() ; 
-					book.checkIn(r, day);
-					hotel.addBooking(book); 
-					System.out.println (  "Booking added successfully! Enjoy your stay!"); 
-					System.out.println (book.toString()) ;
-			
-		}
-		//--------------------------
-
-public static void cancelBooking() {
+     public static void cancleBooking() {
 		System.out.println("\n Enter your Choice :");
-		System.out.println("1- Cancel booking:");
-		System.out.println("2- Checkout from your booking: ");
+		System.out.println("1- Cancle booking :");
+		System.out.println("2- Make checkout for booking : ");
 		System.out.println("3- return to the main menu ");
 		int choice =input.nextInt();
 		switch(choice) {
 		case 1 :
-			System.out.println("Enter your ID:");
+			System.out.println("Enter customer id :");
 			String id = input.next();
 			System.out.println("Enter room number :");
 			int num=input.nextInt();
 			
 			
 			if(hotel.cancelBooking(id, num ))
-				System.out.println("your booking has been canceled successfully! ");
+				System.out.println("your booking  has been successfully canceled ! ");
 			
 			else
-				System.out.println("sorry!, couldn't cancel your booking");
+				System.out.println("sorry ! , couldn't cancel your booking ");
 			break;
 		case 2 :
 			System.out.println("Enter customer id :");
@@ -137,7 +94,7 @@ public static void cancelBooking() {
 			 num=input.nextInt();
 			Booking B=hotel.findBooking(id , num );
 			 if(B==null)
-				 System.out.println("can't found this booking ");
+				 System.out.println("couldn't found your booking ");
 			 else
 				 B.checkout();
 			 break;
@@ -154,76 +111,16 @@ public static void cancelBooking() {
 		
 	}
 	
-	public static void findBooking() {
+	public void findBooking() {
 		System.out.println("Enter customer id :");
 		String id = input.next();
 		System.out.println("Enter room number :");
 		int num=input.nextInt();
 		Booking B=hotel.findBooking(id , num );
 		if(B==null)
-			System.out.println("can't found this reservation");
+			System.out.println("couldn't found your booking ");
 		else 
 			System.out.println(B.toString());
 	}
-
-
-	
-	public static void showRoomInfo()
-	
-	{
-		System.out.println("Enter your choice:");
-		System.out.println("1-show Standard rooms");
-		System.out.println("2-show Suites");
-		System.out.println("3-show Deluxe Suites with number of extra rooms");
-		System.out.println("4-show Executive Suites with the size of meeting room");
-		System.out.println("5-show all available rooms");
-		System.out.println("6-return ro main menue");
-		
-		int choice =input.nextInt();
-		
-		switch(choice) {
-		case 1:
-			StandardRoom[] list1 =hotel.getStandard();
-			for(int i=0;i<list1.length;i++)
-				if(list1[i]!=null) 
-					System.out.println(list1[i].toString());
-			break;
-		case 2:
-			Suite [] list2 =hotel.getSuites();
-			for(int i=0;i<list2.length;i++)
-				if(list2[i]!=null&&!(list2[i] instanceof DeluxeSuite)&&!(list2[i] instanceof ExecutiveSuite)) 
-					System.out.println(list2[i].toString());
-			break;
-		case 3:
-			System.out.println("Enter how many extra rooms:");
-			int numR=input.nextInt();
-			Suite [] list3 =hotel.getSuites(numR);
-			for(int i=0;i<list3.length;i++)
-				if(list3[i]!=null) 
-					System.out.println(list3[i].toString());
-			break;
-		case 4:
-			System.out.println("Enter the size of meeting room:");
-			String  meetingR=input.next();
-			Suite [] list4 =hotel.getSuites(numR);
-			for(int i=0;i<list4.length;i++)
-				if(list4[i]!=null) 
-					System.out.println(list4[i].toString());
-			break;
-		case 5:
-			Room [] list5 =hotel.getAvailableRooms();
-			for(int i=0;i<list5.length;i++)
-				if(list5[i]!=null) {
-					System.out.println(list5[i].getClass().getSimpleName());
-					System.out.println(list5[i].toString());
-		} break;
-		case 6:
-			System.out.println("Return to menue..");
-			break;
-			default:
-				System.out.println("invaild input !");
-		}
-	}
-	
 
 }
