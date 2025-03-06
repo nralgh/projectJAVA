@@ -1,3 +1,5 @@
+package java113P1;
+
 public class Booking {
 	private String name ;
 	private String phoneNumber;
@@ -29,7 +31,7 @@ public void checkIn(Room R ,int days) {
 bill= numOfDays *room.calculatePrice();
 	
 }
-public void checkout() {
+public void checkOut() {
 	if (room.isAvailable()==true)
 		System.out.println("The room has already been checked out");
 	else {
