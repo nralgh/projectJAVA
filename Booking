@@ -67,7 +67,7 @@ return phoneNumber;
 public void setRoom(Room room){
 this.room=room;
 }
-public String getRoom (){
+public Room getRoom (){
 return room;
 }
 }
