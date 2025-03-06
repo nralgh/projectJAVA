@@ -9,10 +9,10 @@ public class TestHotel {
 	public static void main(String[] args) {
 		
 		//int RoomNumber ,String kind ,double Price
-StandardRoom standard1=new StandardRoom (01,"Single",500.0);
-StandardRoom standard2=new StandardRoom (02,"Single",500.0);
-StandardRoom standard3=new StandardRoom (03,"double",700.0);	
-StandardRoom standard4=new StandardRoom (04,"double",700.0);
+StandardRoom standard1=new StandardRoom (001,"Single",500.0);
+StandardRoom standard2=new StandardRoom (002,"Single",500.0);
+StandardRoom standard3=new StandardRoom (003,"double",700.0);	
+StandardRoom standard4=new StandardRoom (004,"double",700.0);
 
 
 //int moreBeds,double price ,int roomNumber,boolean windowView
