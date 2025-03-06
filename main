@@ -48,7 +48,7 @@ hotell.addRoom(executive3);
 //menu 
 int choice ; 
 		do {
-			System.out.println( "Welcome to the Hotel!, Select what do you need:");
+			System.out.println( "Welcome to the Holiday Hotel!, Select what do you need:");
 			System.out.println("1) Make a new booking");
 			System.out.println("2) Show room details ");
 			System.out.println("3) Cancel -check out booking");
@@ -79,7 +79,7 @@ int choice ;
 		}while (choice !=5);}
 
 		public static void makeNewBooking() {
-			System.out.println("Enter Room Number:");
+			System.out.println("Enter Room Number: (0001 - 002 -003 -004");
 			int number = input.nextInt();
 			Room r = hotel.findRoom(number);
 			if ( !r.isAvailable () ||  r==null ) {
