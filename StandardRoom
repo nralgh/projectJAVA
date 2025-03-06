@@ -1,18 +1,20 @@
-public class StandardRoom  extends Room{
-private String Kind;
+package java113P1;
 
-public StandardRoom(int RoomNum , String Kind ,double price ) {
-	super(RoomNum , price );
-	this.Kind=Kind;
+public class StandardRoom  extends Room{
+private String kind;
+
+public StandardRoom(int roomNum , String kind ,double price ) {
+	super(roomNum , price );
+	this.kind=kind;
 }
  public String toString() {
-	 return super.toString()+"\n the room kind is : "+Kind ;
+	 return super.toString()+"\n the room kind is : "+kind ;
  }
  
 public double calculatePrice() {
 	double totalPrice=0; 
 	
-	if(Kind.equalsIgnoreCase("Double"))
+	if(kind.equalsIgnoreCase("Double"))
 	totalPrice=price+500;
 	else
 		totalPrice=price;
@@ -20,10 +22,10 @@ public double calculatePrice() {
 	return totalPrice;
 }
 public String getKind() {
-	return Kind;
+	return kind;
 }
 public void setKind(String kind) {
-	Kind = kind;
+	kind = kind;
 }
 
 
