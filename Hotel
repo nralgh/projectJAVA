@@ -1,46 +1,131 @@
-public abstract class Room {
-private int roomNum;
-private boolean available ;
-protected double price ;
+package java113P1;
 
+public class Hotel {
+	
+	private String hotelName;
+	 Room[] roomList;
+	 Booking[] bookingList;
+	private int numOfRooms;
+	private int numOfBooking;
+	
+	
+	public Hotel(String name, int number) {
+		roomList=new Room[70];
+		bookingList=new Booking [number];
+		hotelName = name;
+		numOfBooking = 0;
+		numOfRooms=0;
+	}
+	
+	
+	public boolean addRoom (Room R) {
+		if(numOfRooms<roomList.length) {
+			roomList[numOfRooms++]=R;
+			return true;}
+		return false;}
+	
+	public boolean deleteRoom(int roomNum ) {
+		for (int i=0;i<numOfRooms;i++)
+		if (roomList[i].getRoomNum()==roomNum) {
+			if(roomList[i].isAvailable()==true) {
+				for(int j=i;j<numOfRooms-1;j++)
+					roomList[j]=roomList[j+1];
+				numOfRooms--;
+				roomList[numOfRooms]=null;
+				return true;
+			}
+			else 
+				System.out.println("this room is booked !");
+			}
+			return false;
+		
+		
+	}
+	
+	public boolean addBooking(Booking B) {
+		if(numOfBooking<bookingList.length) {
+			bookingList[numOfBooking++]=new Booking (B);
+			return true;}
+		return false;
+	}
 
-public Room(int roomNum , double price ) {
-	this.roomNum = roomNum;
-	this.price=price;
-	available=true;
-}
+	public boolean cancelBooking (String id,int roomNum) {
+		for(int i=0;i<numOfBooking ;i++) {
+			if (bookingList[i].getID().equals(id)&&bookingList[i].getRoom().getRoomNum()==roomNum)
+			{
+				bookingList[i].checkOut();
+				bookingList[i]=bookingList[numOfBooking-1];
+				numOfBooking--;
+				bookingList[numOfBooking]=null;
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	public Booking findBooking (String id,int roomNum) {
+		for(int i=0;i<numOfBooking ;i++) {
+			if (bookingList[i].getID().equals(id)&&bookingList[i].getRoom().getRoomNum()==roomNum) 
+		return bookingList[i];}
+			
+			return null;
+	}
+	
+	public Room findRoom (int roomNo) {
+		for (int i=0 ;i<numOfRooms;i++)
+			if (roomList[i].getRoomNum()==roomNo)
+				return roomList[i];
+				
+				return null;
+		
+	}
 
-public abstract double calculatePrice();
-
-public String toString() {
-	return "the room number is :"+roomNum+ ( available ? " the room is available ":"the room is not available ");
-}
-
-public int getRoomNum() {
-	return roomNum;
-}
-
-public void setRoomNum(int roomNum) {
-	this.roomNum = roomNum;
-}
-
-public boolean isAvailable() {
-	return available;
-}
-
-public void setAvailable(boolean available) {
-	this.available = available;
-}
-
-public double getPrice() {
-	return price;
-}
-
-public void setPrice(double price) {
-	this.price = price;
-}
-
-
-
-
+	public StandardRoom[] getStandard() {
+		StandardRoom[] list=new StandardRoom[numOfRooms];
+		int j=0 ;
+		for (int i=0;i<numOfRooms;i++) 
+			if(roomList[i] instanceof StandardRoom )
+				list[j++]=(StandardRoom) roomList[i];
+			return list;
+		
+	}
+	
+	public Suite[] getSuites() {
+		Suite [] list=new Suite[numOfRooms];
+		int j=0 ;
+		for (int i=0;i<numOfRooms;i++) 
+			if(roomList[i] instanceof Suite )
+				list[j++]=(Suite) roomList[i];
+			return list;
+		}
+		
+	
+	
+	public DeluxeSuite[] getSuites(int nOfMR) {
+		DeluxeSuite [] list=new DeluxeSuite[numOfRooms];
+		int j=0 ;
+		for (int i=0;i<numOfRooms;i++) 
+			if(roomList[i] instanceof DeluxeSuite && ((DeluxeSuite) roomList[i]).getNumOfMoreRooms()>=nOfMR)
+				list[j++]=(DeluxeSuite) roomList[i];
+			return list;
+		}
+	public ExecutiveSuite[] getSuites(String meetingSize) {
+		ExecutiveSuite [] list=new ExecutiveSuite[numOfRooms];
+		int j=0 ;
+		for (int i=0;i<numOfRooms;i++) 
+			if(roomList[i] instanceof ExecutiveSuite && ((ExecutiveSuite) roomList[i]).getMeetingRoomSize().equalsIgnoreCase(meetingSize))
+				list[j++]=(ExecutiveSuite) roomList[i];
+			return list;
+		}	
+	
+	public Room[] getAvailableRooms() {
+		Room [] list=new Room[numOfRooms];
+		int j=0 ;
+		for (int i=0;i<numOfRooms;i++) 
+			if(roomList[i].isAvailable() )
+				list[j++]= roomList[i];
+			return list;
+		
+		
+	}
 }
