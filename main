@@ -91,11 +91,11 @@ int choice ;
 					input.nextLine ();
 					String name=input.nextLine();
 					System.out.println ("Enter phone number:");
-					input.next();
+				
 					String pNumber=input.next();
 
 					System.out.println ("Enter your ID: ");
-					input.next();
+				
 					String ID =input.next();
 
 					Booking book =new Booking ( name, pNumber, ID);
