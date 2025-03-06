@@ -65,7 +65,7 @@ int choice ;
 					System.out.println(" Invalid option, please try again. ");
 					
 		}
-		}while (choice !=5);
+		}while (choice !=5);}
 
 		public static void makeNewBooking() {
 			System.out.println("Enter Room Number:");
@@ -99,7 +99,7 @@ int choice ;
 		}
 		//--------------------------
 
-public static void cancleBooking() {
+public static void cancelBooking() {
 		System.out.println("\n Enter your Choice :");
 		System.out.println("1- Cancle reservation :");
 		System.out.println("2- Make checkout for reservation: ");
