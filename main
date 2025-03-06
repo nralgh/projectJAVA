@@ -174,7 +174,7 @@ public static void cancelBooking() {
 		System.out.println("Enter your choice:");
 		System.out.println("1-show Standard rooms");
 		System.out.println("2-show Suites");
-		System.out.println("3-show Deluxe Suites with number of extra rooms");//spicifce number of room?
+		System.out.println("3-show Deluxe Suites with number of extra rooms");
 		System.out.println("4-show Executive Suites with the size of meeting room");
 		System.out.println("5-show all available rooms");
 		System.out.println("6-return ro main menue");
