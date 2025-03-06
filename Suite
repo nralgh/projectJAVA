@@ -1,18 +1,20 @@
+package java113P1;
+
 public class Suite extends Room {
 
 	
-	private int morebeds;
+	private int moreBeds;
 	private boolean windowView;
 	
 	
-	public Suite(  int RoomNo , double price ,int morebeds , boolean windowView  ) {
-		super(RoomNo,price);
-		this.morebeds=morebeds;
+	public Suite(  int roomNo , double price ,int moreBeds , boolean windowView  ) {
+		super(roomNo,price);
+		this.moreBeds=moreBeds;
 		this.windowView=windowView;
 	}
 	
 	public String toString() {
-		return super.toString()+"\n the number of extra beds :"+morebeds+(windowView ? " \n is there a fabulous view ! ": " good veiw");
+		return super.toString()+"\n the number of extra beds :"+moreBeds+(windowView ? " \n is there a fabulous view ! ": " good veiw");
 	}
 	
 	public double calculatePrice() {
@@ -24,11 +26,11 @@ public class Suite extends Room {
 	}
 
 	public int getMorebeds() {
-		return morebeds;
+		return moreBeds;
 	}
 
 	public void setMorebeds(int morebeds) {
-		this.morebeds = morebeds;
+		this.moreBeds = morebeds;
 	}
 
 	public boolean isWindowView() {
