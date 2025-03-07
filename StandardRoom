@@ -8,7 +8,7 @@ public StandardRoom(int roomNum , String kind ,double price ) {
 	this.kind=kind;
 }
  public String toString() {
-	 return super.toString()+"\n the room kind is : "+kind ;
+	 return super.toString()+"\nthe room kind is : "+kind ;
  }
  
 public double calculatePrice() {
