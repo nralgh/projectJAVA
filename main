@@ -3,7 +3,8 @@ package java113P1;
 
 import java.util.Scanner ;
 
-public class TestHotel {static Scanner input =new Scanner (System.in);
+public class TestHotel {
+static Scanner input =new Scanner (System.in);
 		static Hotel hotel =new Hotel("Holiday Hotel",100);
 		public static void main(String[] args) {
 			
@@ -20,7 +21,7 @@ public class TestHotel {static Scanner input =new Scanner (System.in);
 	Suite suite3= new Suite(007,2000.0 ,013,true);
 	
 	
-	//int roomNumber, double price,int moreBeds, boolean windowView ,int moreRooms,boolean hasBalcony
+	//int roomNumber, double price, int moreBeds, boolean windowView ,int moreRooms,boolean hasBalcony
 	DeluxeSuite deluxe1=new DeluxeSuite(108,2500.0,2,true,2,false);
 	DeluxeSuite deluxe2=new DeluxeSuite(109,3000.0,0,true,3,true);
 	
@@ -136,7 +137,7 @@ public class TestHotel {static Scanner input =new Scanner (System.in);
 				 num=input.nextInt();
 				Booking B=hotel.findBooking(id , num );
 				 if(B==null)
-					 System.out.println("can't found this booking ");
+					 System.out.println("coudln't found your booking !  ");
 				 else
 					 B.checkout();
 				 break;
@@ -160,7 +161,7 @@ public class TestHotel {static Scanner input =new Scanner (System.in);
 			int num=input.nextInt();
 			Booking B=hotel.findBooking(id , num );
 			if(B==null)
-				System.out.println("can't found this reservation");
+				System.out.println("coudln't found your booking ! ");
 			else 
 				System.out.println(B.toString());
 		}
