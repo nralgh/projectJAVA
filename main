@@ -77,7 +77,7 @@ static Scanner input =new Scanner (System.in);
 						
 			}
 			}while (choice !=5);}
-	
+	//--------------------------------------------------------------------------------
 			public static void makeNewBooking() {
 				System.out.println("==============================================");
 				System.out.println("\nStandard Room No.:(001,002,003,004)");
@@ -229,7 +229,7 @@ static Scanner input =new Scanner (System.in);
 			
 			
 		}
-		
+		//--------------------------------------------------------------------------
 		public static void findBooking() {
 			System.out.println("==============================================");
 			System.out.println("\nEnter customer id :");
