@@ -1,3 +1,5 @@
+package java113P1;
+
 public abstract class Room {
 private int roomNum;
 private boolean available ;
@@ -13,7 +15,7 @@ public Room(int roomNum , double price ) {
 public abstract double calculatePrice();
 
 public String toString() {
-	return "the room number:"+roomNum+ ( available ? " Room avalible for booking ":"  has been booked ");
+	return "the room number is : "+roomNum+ ( available ? " ,the room is available ":" ,the room is not available ");
 }
 
 public int getRoomNum() {
