@@ -81,7 +81,7 @@ public class TestHotel {static Scanner input =new Scanner (System.in);
 				System.out.println("Enter Room Number: ");
 				int number = input.nextInt();
 				Room r = hotel.findRoom(number);
-				if ( !r.getAvailable () ||  r==null ) {
+				if ( !r.isAvailable () ||  r==null ) {
 	
 						System.out.println("This room is not available, please try another one");
 						    return;
