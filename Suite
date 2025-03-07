@@ -14,7 +14,7 @@ public class Suite extends Room {
 	}
 	
 	public String toString() {
-		return super.toString()+"\n the number of extra beds :"+moreBeds+(windowView ? " \n is there a fabulous view ! ": " good veiw");
+		return super.toString()+"\nThe number of extra beds : "+moreBeds+(windowView ? " ,There is a fabulous view ! ": " ,Normal veiw");
 	}
 	
 	public double calculatePrice() {
