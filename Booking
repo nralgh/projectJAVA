@@ -43,9 +43,9 @@ public void checkOut() {
 }
 
 	public String toString() {
-		return "-Customer Name:"+name + 	"     -ID:"+ID +
-			"\n-Customer phone number: "+ phoneNumber  +   
-	 "\n" + room + "  -Number of Days is:"+ numOfDays + " -The bill: "+  bill;
+		return "Customer Name: "+name + 	" , ID "+ID +
+				" ,Customer phone number "+ phoneNumber+
+	 "\n"+ room + "\nNumber of Days " + numOfDays + " ,The bill "+ bill;
 	}
 	public void setName(String name){
 this.name=name;
