@@ -139,7 +139,7 @@ static Scanner input =new Scanner (System.in);
 				 if(B==null)
 					 System.out.println("coudln't found your booking !  ");
 				 else
-					 B.checkout();
+					 B.checkOut();
 				 break;
 			case 3 : 
 				System.out.println("");
@@ -206,7 +206,7 @@ static Scanner input =new Scanner (System.in);
 			case 4:
 				System.out.println("Enter the size of meeting room:");
 				String  meetingR=input.next();
-				Suite [] list4 =hotel.getSuites(numR);
+				Suite [] list4 =hotel.getSuites(meetingR);
 				for(int i=0;i<list4.length;i++)
 					if(list4[i]!=null) 
 						System.out.println(list4[i].toString());
