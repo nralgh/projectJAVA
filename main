@@ -7,20 +7,32 @@ public class TestHotel {
 static Scanner input =new Scanner (System.in);
 		static Hotel hotel =new Hotel("Holiday Hotel",100);
 		public static void main(String[] args) {
+
+			for (int i = 1; i <= 20; i++) {
+			    int roomNum =( 000 + i);// Ground floor
+			    String kind = (i <= 10) ? "Single" : "Double"; 
+			    double price = (i <= 10) ? 500.0 : 700.0; 
+			    
+			    StandardRoom standardRoom = new StandardRoom(roomNum , kind , price);
+			    hotel.addRoom(standardRoom);
+			}
+			//------
+			for (int i = 21; i <= 40 ; i++) {
+			    boolean windowView = (i > 30);
 			
-			//int RoomNumber ,String kind ,double Price
-	StandardRoom standard1=new StandardRoom (001,"Single",500.0);
-	StandardRoom standard2=new StandardRoom (002,"Single",500.0);
-	StandardRoom standard3=new StandardRoom (003,"double",700.0);	
-	StandardRoom standard4=new StandardRoom (004,"double",700.0);
-	
-	
-	//int roomNumber,double price ,int moreBeds,boolean windowView
-	Suite suite1= new Suite(005,1000.0 ,011,false);
-	Suite suite2= new Suite(006,1500.0 ,012,true);
-	Suite suite3= new Suite(007,2000.0 ,013,true);
-	
-	
+			    int moreBeds;
+			    if (i <= 25 || (i > 30 && i <= 35)) {
+			        moreBeds = 1;
+			    } else {
+			        moreBeds = 2;
+			    }
+
+			    double price = 1000.0 + (moreBeds * 100);
+			    int roomNumber = 100+ i; //first floor
+			    Suite suiteRoom = new Suite(roomNumber, price, moreBeds, windowView);
+			    hotel.addRoom(suiteRoom);
+			}
+			//-----
 	//int roomNumber, double price, int moreBeds, boolean windowView ,int moreRooms,boolean hasBalcony
 	DeluxeSuite deluxe1=new DeluxeSuite(108,2500.0,2,true,2,false);
 	DeluxeSuite deluxe2=new DeluxeSuite(109,3000.0,0,true,3,true);
@@ -30,13 +42,7 @@ static Scanner input =new Scanner (System.in);
 	ExecutiveSuite executive1=new ExecutiveSuite(210,1,true,3500.0,"Small");
 	ExecutiveSuite executive2=new ExecutiveSuite(211,1,false,4000.0,"Big");
 	ExecutiveSuite executive3=new ExecutiveSuite(212,1,true,4500.0,"Medium");
-	hotel.addRoom(standard1);
-	hotel.addRoom(standard2);
-	hotel.addRoom(standard3);
-	hotel.addRoom(standard4);
-	hotel.addRoom(suite1);
-	hotel.addRoom(suite2);
-	hotel.addRoom(suite3);
+	
 	hotel.addRoom(deluxe1);
 	hotel.addRoom(deluxe2);
 	hotel.addRoom(executive1);
@@ -87,7 +93,7 @@ static Scanner input =new Scanner (System.in);
 				System.out.println("\nEnter Room Number: ");
 				int number = input.nextInt();
 				Room r = hotel.findRoom(number);
-				if ( !r.isAvailable () ||  r==null ) {
+				if ( r==null || r.isAvailable ()==false  ) {
 	
 						System.out.println("This room is not available, please try another one");
 						    return;
