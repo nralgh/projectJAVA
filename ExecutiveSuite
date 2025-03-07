@@ -26,7 +26,7 @@ public class ExecutiveSuite extends Suite {
 	}
 	
 	public String toString() {
-		return super.toString()+"\n the meeting room size for the Executive Suite is :"+meetingRoomSize;
+		return super.toString()+"\nThe meeting room size for the Executive Suite is : "+meetingRoomSize;
 	}
 
 
