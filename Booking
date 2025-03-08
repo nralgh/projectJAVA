@@ -1,5 +1,6 @@
 package java113P1;
 
+
 public class Booking {
 	private String name ;
 	private String phoneNumber;
@@ -20,26 +21,28 @@ public Booking (Booking B) {
 	this.ID =B.ID;
 	this.numOfDays= B.numOfDays;
 	this.room= B.room;
+	this.startDay=B.startDay;
+	this.startMonth=B.startMonth;
+	this.startYear=B.startYear;
+	this.endDay=B.endDay;
+	this.endMonth=B.endMonth;
+	this.endYear=B.endYear;
 	this.bill=B.bill;
-	
-		
-	
-	
 }
-public boolean checkIn(Room R ,int days, int startDay, int startMonth ,int startYear, int endDay ,int endMonth ,int endYear) {
+public boolean checkIn(Room R ,int days, int sDay, int sMonth ,int sYear, int eDay ,int eMonth ,int eYear) {
 
-	if (!validateDate(startDay, startMonth, startYear, endDay, endMonth, endYear)) {
+	if (!validateDate(sDay, sMonth, sYear, eDay, eMonth, eYear)) {
         System.out.println("Invalid date. Please try again.");
         return false ;
     }
 	numOfDays= days;
 	room= R;
-	this.startDay = startDay;
-    this.startMonth = startMonth;
-    this.startYear = startYear;
-    this.endDay = endDay;
-    this.endMonth = endMonth;
-    this.endYear = endYear;
+	startDay = sDay;
+    startMonth = sMonth;
+    startYear = sYear;
+    endDay = eDay;
+    endMonth = eMonth;
+    endYear = eYear;
 	room.setAvailable(false);
 bill= numOfDays *room.calculatePrice();
 	return true ;
@@ -54,34 +57,34 @@ public void checkOut() {
 	}
 	
 }
-private boolean validateDate(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear) {
+private boolean validateDate(int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
    
-    if (startMonth < 1 || startMonth > 12  || endMonth < 1 || endMonth > 12) {
+    if (sMonth < 1 || sMonth > 12  || eMonth < 1 || eMonth > 12) {
         System.out.println("Invalid month.");
         return false;
     }
 
   
-    if (startDay < 1 || startDay > getDaysInMonth(startMonth, startYear)) {
+    if (sDay < 1 || sDay > getDaysInMonth(sMonth, sYear)) {
         System.out.println("Invalid start day.");
         return false;
     }
 
-    if (endDay < 1 || endDay > getDaysInMonth(endMonth, endYear)) {
+    if (eDay < 1 || eDay > getDaysInMonth(eMonth, eYear)) {
         System.out.println("Invalid end day.");
         return false;
     }
-    int currentYear = 2025, currentMonth = 3, currentDay = 7; //current date
-    if (startYear < currentYear ||
-        (startYear == currentYear && startMonth < currentMonth) ||
-        (startYear == currentYear && startMonth == currentMonth && startDay < currentDay)) {
+    int currentYear = 2025, currentMonth = 3, currentDay = 8; //current date
+    if (sYear < currentYear ||
+        (sYear == currentYear && sMonth < currentMonth) ||
+        (sYear == currentYear && sMonth == currentMonth && sDay < currentDay)) {
         System.out.println(" Start date cannot be in the past.");
         return false;
     }
 
-    if (endYear < startYear ||
-        (endYear == startYear && endMonth < startMonth) ||
-        (endYear == startYear && endMonth == startMonth && endDay <= startDay)) {
+    if (eYear < sYear ||
+        (eYear == sYear && eMonth < sMonth) ||
+        (eYear == sYear && eMonth == sMonth && eDay <= sDay)) {
         System.out.println(" End date must be after start date.");
         return false;
     }
