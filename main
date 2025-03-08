@@ -1,11 +1,11 @@
 package java113P1;
 
-
 import java.util.Scanner ;
 
 public class TestHotel {
 static Scanner input =new Scanner (System.in);
-		static Hotel hotel =new Hotel("Holiday Hotel",500);
+//String hotelName,number
+		static Hotel hotel =new Hotel("Holiday Hotel",100);
 		public static void main(String[] args) {
 
 			for (int i = 1; i <= 20; i++) {
@@ -16,7 +16,7 @@ static Scanner input =new Scanner (System.in);
 			    StandardRoom standardRoom = new StandardRoom(roomNum , kind , price);
 			    hotel.addRoom(standardRoom);
 			}
-			//------
+			//--------------------------------------------------------------------------------
 			for (int i = 21; i <= 40 ; i++) {
 			    boolean windowView = (i > 30);
 			
@@ -32,23 +32,31 @@ static Scanner input =new Scanner (System.in);
 			    Suite suiteRoom = new Suite(roomNumber, price, moreBeds, windowView);
 			    hotel.addRoom(suiteRoom);
 			}
-			//-----
-	//int roomNumber, double price, int moreBeds, boolean windowView ,int moreRooms,boolean hasBalcony
-	DeluxeSuite deluxe1=new DeluxeSuite(108,2500.0,2,true,2,false);
-	DeluxeSuite deluxe2=new DeluxeSuite(109,3000.0,0,true,3,true);
-	
-	
-	//int roomNumber ,int moreBeds , boolean windowView, double price , String meetingRoomSize
-	ExecutiveSuite executive1=new ExecutiveSuite(210,1,true,3500.0,"Small");
-	ExecutiveSuite executive2=new ExecutiveSuite(211,1,false,4000.0,"Big");
-	ExecutiveSuite executive3=new ExecutiveSuite(212,1,true,4500.0,"Medium");
-	
-	hotel.addRoom(deluxe1);
-	hotel.addRoom(deluxe2);
-	hotel.addRoom(executive1);
-	hotel.addRoom(executive2);
-	hotel.addRoom(executive3);
-	
+			//--------------------------------------------------------------------------------------
+			//int roomNumber, double price, int moreBeds, boolean windowView ,int moreRooms,boolean hasBalcony
+			DeluxeSuite deluxe1 = new DeluxeSuite(241, 2500.0, 1, true, 1, false);
+			DeluxeSuite deluxe2 = new DeluxeSuite(242, 2500.0, 1, true, 1, false);
+			DeluxeSuite deluxe3 = new DeluxeSuite(243, 3000.0, 2, true, 2, true);
+			DeluxeSuite deluxe4 = new DeluxeSuite(244, 3000.0, 2, true, 2, true);
+			DeluxeSuite deluxe5 = new DeluxeSuite(245, 3000.0, 2, true, 2, true);
+//-----------------------------------------------------------------------------------------------------
+			//int roomNumber ,int moreBeds , boolean windowView, double price , String meetingRoomSize
+			ExecutiveSuite executive1 = new ExecutiveSuite(246, 1,false,2500.0, "Small");
+			ExecutiveSuite executive2 = new ExecutiveSuite(247,  1, true,3000.0, "Medium");
+			ExecutiveSuite executive3 = new ExecutiveSuite(248,  1, true,3000.0, "Medium");
+			ExecutiveSuite executive4 = new ExecutiveSuite(249, 2, true,3200.0,  "Large");
+			ExecutiveSuite executive5 = new ExecutiveSuite(250,  2, true,3200.0,  "Large");
+//--------------------------------------------------------------------------------------------------
+			hotel.addRoom(deluxe1);
+			hotel.addRoom(deluxe2);
+			hotel.addRoom(deluxe3);
+			hotel.addRoom(deluxe4);
+			hotel.addRoom(deluxe5);
+			hotel.addRoom(executive1);
+			hotel.addRoom(executive2);
+			hotel.addRoom(executive3);
+			hotel.addRoom(executive4);
+			hotel.addRoom(executive5);
 	
 	
 	//menu 
@@ -57,7 +65,7 @@ static Scanner input =new Scanner (System.in);
 				System.out.println( "Welcome to the Holiday Hotel!, Select what do you need:");
 				System.out.println("1) Make a new booking");
 				System.out.println("2) Show room details ");
-				System.out.println("3) Cancel \\ checkout booking");
+				System.out.println("3) Cancel\\check out booking");
 				System.out.println("4) Search for a booking");
 				System.out.println("5) Exit");
 				choice = input.nextInt ();
@@ -87,14 +95,17 @@ static Scanner input =new Scanner (System.in);
 			public static void makeNewBooking() {
 				System.out.println("==============================================");
 				System.out.println("\nStandard Room No.:\nSingle room:001-010 \nDouble room:011-020");
-				System.out.println("Suite No.:\nWith normal view - one more bed:(021-025)\nWith normal veiw - Two more beds:(026-030)");
-				System.out.println("With sea view - one more bed:(031-035)\nWith sea view - two more beds:(036-040)");
-				System.out.println("Deluxe Suite No.:(108,109)");
-				System.out.println("Executive Suite No.:(210,211,212)");
+				System.out.println("Suite No.:\nWith normal view - one more bed:(121-125)\nWith normal veiw - Two more beds:(126-130)");
+				System.out.println("With sea view - one more bed:(131-135)\nWith sea view - two more beds:(136-140)");
+				System.out.println("Deluxe Suite No.:\nwith sea view and one more bed and one room(241-242)");
+				System.out.println("with sea view and two more bed and two rooms and has a balcony(243-245)");
+				System.out.println("Executive Suite No.:\nwith normal view and one more bed and a meeting size (small)(246)");
+				System.out.println("with sea view and one more bed and a meeting size (Medium)(247-248)"); 
+				System.out.println("with sea view and two more bed and a meeting size (Large)(249-250)");
 				System.out.println("\nEnter Room Number: ");
 				int number = input.nextInt();
 				Room r = hotel.findRoom(number);
-				if ( r==null || r.isAvailable ()==false  ) {
+				if ( r==null||r.isAvailable() ==false ) {
 	
 						System.out.println("This room is not available, please try another one");
 						    return;
@@ -117,21 +128,21 @@ static Scanner input =new Scanner (System.in);
 						boolean validBooking =false ;
 				
 						while (!validBooking) {
-						System.out.print (" Enter start date (day ):");
+						System.out.print (" Enter start date (day):");
 						int startDay = input.nextInt ();
 						System.out.print (" Month:");
 						int startMonth = input.nextInt ();
 						System.out.print(" year:");
 						int startYear = input.nextInt ();
 					
-						System.out.print(" Enter end date(Day ):");
+						System.out.print(" Enter end date(day):");
 						int  endDay = input.nextInt ();
 						System.out.print(" Month:");
 						int endMonth = input.nextInt ();
 						System.out.print(" year:");
 						int endYear = input.nextInt ();
 					
-						validBooking =book.checkIn(r, day,startDay, startMonth, startYear, endDay, endMonth, endYear);
+						validBooking =book.checkIn(hotel ,r, day,startDay, startMonth, startYear, endDay, endMonth, endYear);
 						
 						if (!validBooking ) {
 							System.out.println(" enter valid date");
@@ -151,10 +162,8 @@ static Scanner input =new Scanner (System.in);
 				System.out.println("1-show Standard rooms");
 				System.out.println("2-show Suites");
 				System.out.println("3-show Deluxe Suites with number of extra rooms");
-				System.out.println("3-show Deluxe Suites with number of extra rooms");
 				System.out.println("4-show Executive Suites with the size of meeting room");
-				System.out.println("5-show all available rooms");
-				System.out.println("6-return to main menue");
+				System.out.println("5-return to main menue");
 				
 				
 				int choice =input.nextInt();
@@ -192,15 +201,8 @@ static Scanner input =new Scanner (System.in);
 							System.out.println(list4[i].toString());
 					System.out.println("==============================================\n");
 					break;
-				case 5:
-					Room [] list5 =hotel.getAvailableRooms();
-					for(int i=0;i<list5.length;i++)
-						if(list5[i]!=null) {
-							System.out.println(list5[i].getClass().getSimpleName());
-							System.out.println(list5[i].toString());
-							System.out.println("==============================================\n");
-				} break;
-				case 6 : 
+
+				case 5: 
 					System.out.println("");
 					break;
 					default:
