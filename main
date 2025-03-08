@@ -57,7 +57,7 @@ static Scanner input =new Scanner (System.in);
 				System.out.println( "Welcome to the Holiday Hotel!, Select what do you need:");
 				System.out.println("1) Make a new booking");
 				System.out.println("2) Show room details ");
-				System.out.println("3) Cancel\\check out booking");
+				System.out.println("3) Cancel \\ checkout booking");
 				System.out.println("4) Search for a booking");
 				System.out.println("5) Exit");
 				choice = input.nextInt ();
