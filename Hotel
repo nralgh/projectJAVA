@@ -1,18 +1,20 @@
 package java113P1;
 
-public class Hotel {
 	
-	private String hotelName;
+	
+	public class Hotel {
+	
+	private String HotelName;
 	 Room[] roomList;
 	 Booking[] bookingList;
 	private int numOfRooms;
 	private int numOfBooking;
 	
 	
-	public Hotel(String name, int number) {
+	public Hotel(String Name, int number) {
 		roomList=new Room[50];
 		bookingList=new Booking [number];
-		hotelName = name;
+		HotelName = Name;
 		numOfBooking = 0;
 		numOfRooms=0;
 	}
@@ -24,9 +26,9 @@ public class Hotel {
 			return true;}
 		return false;}
 	
-	public boolean deleteRoom(int roomNum ) {
+	public boolean deleteRoom(int no ) {
 		for (int i=0;i<numOfRooms;i++)
-		if (roomList[i].getRoomNum()==roomNum) {
+		if (roomList[i].getRoomNum()==no) {
 			if(roomList[i].isAvailable()==true) {
 				for(int j=i;j<numOfRooms-1;j++)
 					roomList[j]=roomList[j+1];
@@ -127,5 +129,33 @@ public class Hotel {
 			return list;
 		
 		
+	}
+	public boolean isOverlapping(Room room, int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
+	    for (int i = 0; i < numOfBooking; i++) {
+	        Booking b = bookingList[i];
+
+	      
+	        if (b.getRoom().getRoomNum() == room.getRoomNum()) {
+	            
+	           
+	            if (!((sYear > b.getEndYear()) || 
+	                  (sYear == b.getEndYear() && sMonth > b.getEndMonth()) || 
+	                  (sYear == b.getEndYear() && sMonth == b.getEndMonth() && sDay >= b.getEndDay()) ||
+
+	                  (eYear < b.getStartYear()) || 
+	                  (eYear == b.getStartYear() && eMonth < b.getStartMonth()) || 
+	                  (eYear == b.getStartYear() && eMonth == b.getStartMonth() && eDay < b.getStartDay()))) {
+	                return true; 
+	            }
+	        }
+	    }
+	    return false; 
+	}
+	public int getNumOfOfbooking () {
+		return numOfBooking;
+		
+	}
+	public Booking[] getBookingList(){
+		return bookingList;
 	}
 }
