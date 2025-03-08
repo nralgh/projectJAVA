@@ -207,7 +207,6 @@ public boolean checkIn(Hotel hotel, Room room, int days, int sDay, int sMonth, i
     endMonth = eMonth;
     endYear = eYear;
     
-    // حساب الفاتورة
     bill = numOfDays * room.calculatePrice();
 
     return true;
