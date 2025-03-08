@@ -29,6 +29,7 @@ public Booking (Booking B) {
 	this.endYear=B.endYear;
 	this.bill=B.bill;
 }
+//s=start , e=end
 public boolean checkIn(Room R ,int days, int sDay, int sMonth ,int sYear, int eDay ,int eMonth ,int eYear) {
 
 	if (!validateDate(sDay, sMonth, sYear, eDay, eMonth, eYear)) {
