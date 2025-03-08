@@ -10,7 +10,7 @@ public class Hotel {
 	
 	
 	public Hotel(String name, int number) {
-		roomList=new Room[70];
+		roomList=new Room[50];
 		bookingList=new Booking [number];
 		hotelName = name;
 		numOfBooking = 0;
