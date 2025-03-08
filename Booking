@@ -1,6 +1,5 @@
 package java113P1;
 
-
 public class Booking {
 	private String name ;
 	private String phoneNumber;
@@ -30,27 +29,34 @@ public Booking (Booking B) {
 	this.bill=B.bill;
 }
 //s=start , e=end
-public boolean checkIn(Room room ,int days, int sDay, int sMonth ,int sYear, int eDay ,int eMonth ,int eYear) {
-
-	if (!validateDate(sDay, sMonth, sYear, eDay, eMonth, eYear)) {
+public boolean checkIn(Hotel hotel, Room room, int days, int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
+    if (!validateDate(sDay, sMonth, sYear, eDay, eMonth, eYear)) {
         System.out.println("Invalid date. Please try again.");
-        return false ;
+        return false;
     }
-	numOfDays= days;
-	this.room= room;
-	startDay = sDay;
+
+    
+    if (hotel.isOverlapping(room, sDay, sMonth, sYear, eDay, eMonth, eYear)) {
+        System.out.println("This room is already booked during the selected dates. Please choose another date or room.");
+        return false;
+    }
+
+    numOfDays = days;
+    this.room = room;
+    startDay = sDay;
     startMonth = sMonth;
     startYear = sYear;
     endDay = eDay;
     endMonth = eMonth;
     endYear = eYear;
-	room.setAvailable(false);
-bill= numOfDays *room.calculatePrice();
-	return true ;
+    
+    bill = numOfDays * room.calculatePrice();
+
+    return true;
 }
 public void checkOut() {
 	if (room.isAvailable()==true)
-		System.out.println("The room has already been checked out");
+		System.out.println("The room is now available");
 	else {
 		room.setAvailable(true);
 		System.out.println("check-out sucessful, Thank you for staying with us!");
