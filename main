@@ -87,8 +87,8 @@ static Scanner input =new Scanner (System.in);
 			public static void makeNewBooking() {
 				System.out.println("==============================================");
 				System.out.println("\nStandard Room No.:\nSingle room:001-010 \nDouble room:011-020");
-				System.out.println("Suite No.:\nWithout view - one more bed:(021-025)\nWithout veiw - Two more beds:(026-030)");
-				System.out.println("Witj view - one more bed:(031-035)\nWith view - two more beds:(036-040)");
+				System.out.println("Suite No.:\nWith normal view - one more bed:(021-025)\nWith normal veiw - Two more beds:(026-030)");
+				System.out.println("With sea view - one more bed:(031-035)\nWith sea view - two more beds:(036-040)");
 				System.out.println("Deluxe Suite No.:(108,109)");
 				System.out.println("Executive Suite No.:(210,211,212)");
 				System.out.println("\nEnter Room Number: ");
