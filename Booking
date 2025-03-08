@@ -5,6 +5,8 @@ public class Booking {
 	private String phoneNumber;
 	private String ID;
 	private Room room;
+	private int startDay , startMonth , startYear;
+	private int endDay ,endMonth , endYear;
 	private int numOfDays;
 	private double bill;
 	
@@ -24,12 +26,23 @@ public Booking (Booking B) {
 	
 	
 }
-public void checkIn(Room R ,int days) {
+public boolean checkIn(Room R ,int days, int startDay, int startMonth ,int startYear, int endDay ,int endMonth ,int endYear) {
+
+	if (!validateDate(startDay, startMonth, startYear, endDay, endMonth, endYear)) {
+        System.out.println("Invalid date. Please try again.");
+        return false ;
+    }
 	numOfDays= days;
 	room= R;
+	this.startDay = startDay;
+    this.startMonth = startMonth;
+    this.startYear = startYear;
+    this.endDay = endDay;
+    this.endMonth = endMonth;
+    this.endYear = endYear;
 	room.setAvailable(false);
 bill= numOfDays *room.calculatePrice();
-	
+	return true ;
 }
 public void checkOut() {
 	if (room.isAvailable()==true)
@@ -41,16 +54,69 @@ public void checkOut() {
 	}
 	
 }
+private boolean validateDate(int startDay, int startMonth, int startYear, int endDay, int endMonth, int endYear) {
+   
+    if (startMonth < 1 || startMonth > 12  || endMonth < 1 || endMonth > 12) {
+        System.out.println("Invalid month.");
+        return false;
+    }
 
-	public String toString() {
-		return "Customer Name: "+name + 	" , ID: "+ID +
-				" ,Customer phone number: "+ phoneNumber+
-	 "\n"+ room + "\nNumber of Days: " + numOfDays + " ,The bill: "+ bill;
-	}
+  
+    if (startDay < 1 || startDay > getDaysInMonth(startMonth, startYear)) {
+        System.out.println("Invalid start day.");
+        return false;
+    }
+
+    if (endDay < 1 || endDay > getDaysInMonth(endMonth, endYear)) {
+        System.out.println("Invalid end day.");
+        return false;
+    }
+    int currentYear = 2025, currentMonth = 3, currentDay = 7; //current date
+    if (startYear < currentYear ||
+        (startYear == currentYear && startMonth < currentMonth) ||
+        (startYear == currentYear && startMonth == currentMonth && startDay < currentDay)) {
+        System.out.println(" Start date cannot be in the past.");
+        return false;
+    }
+
+    if (endYear < startYear ||
+        (endYear == startYear && endMonth < startMonth) ||
+        (endYear == startYear && endMonth == startMonth && endDay <= startDay)) {
+        System.out.println(" End date must be after start date.");
+        return false;
+    }
+
+    return true; 
+}
+private int getDaysInMonth(int month, int year) {
+    switch (month) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            return 31;
+        case 4: case 6: case 9: case 11:
+            return 30;
+        case 2:
+            return isLeapYear(year) ? 29 : 28;
+            default: 
+            	return 0;
+    }
+    }
+private boolean isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+
+
+public String toString() {
+	return "Customer Name: "+name + 	" , ID: "+ID +
+			" ,Customer phone number: "+ phoneNumber+
+ "\n"+ room + "\nNumber of Days: " + numOfDays + " ,The bill: "+ bill+
+ "\nStart date :"+startDay+"-"+startMonth+"-"+startYear+"\n"+
+ "End date:"+ endDay+"-"+endMonth+"-"+endYear;
+}
 	public void setName(String name){
 this.name=name;
 }
-public String getName (){
+public String getName(){
 return name;
 }
 public void setID(String ID){
@@ -72,4 +138,24 @@ this.room=room;
 public Room getRoom (){
 return room;
 }
+public int getStartDay() {
+	return startDay;
+}
+public int getStartMonth() {
+	return startMonth;
+}
+public int getStartYear() {
+	return startYear;
+}
+public int getEndDay() {
+	return endDay;
+}
+public int getEndMonth() {
+	return endMonth;
+}
+public int getEndYear() {
+	return endYear;
+}
+
+
 }
