@@ -111,9 +111,30 @@ static Scanner input =new Scanner (System.in);
 	
 						Booking book =new Booking ( name, pNumber, ID);
 						System.out.println ( "Enter the number of days for your stay: ") ;
-	
 						int day = input.nextInt() ; 
-						book.checkIn(r, day);
+		
+						boolean validBooking =false ;
+				
+						while (!validBooking) {
+						System.out.print (" Enter start date (day ):");
+						int startDay = input.nextInt ();
+						System.out.print (" Month:");
+						int startMonth = input.nextInt ();
+						System.out.print(" year:");
+						int startYear = input.nextInt ();
+					
+						System.out.print(" Enter end date(Day ):");
+						int  endDay = input.nextInt ();
+						System.out.print(" Month:");
+						int endMonth = input.nextInt ();
+						System.out.print(" year:");
+						int endYear = input.nextInt ();
+					
+						validBooking =book.checkIn(r, day,startDay, startMonth, startYear, endDay, endMonth, endYear);
+						
+						if (!validBooking ) {
+							System.out.println(" enter valid date");
+						}}
 						hotel.addBooking(book); 
 						System.out.println (  "Booking added successfully! Enjoy your stay!"); 
 						System.out.println("==============================================\n");
