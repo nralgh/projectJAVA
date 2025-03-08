@@ -30,14 +30,14 @@ public Booking (Booking B) {
 	this.bill=B.bill;
 }
 //s=start , e=end
-public boolean checkIn(Room R ,int days, int sDay, int sMonth ,int sYear, int eDay ,int eMonth ,int eYear) {
+public boolean checkIn(Room room ,int days, int sDay, int sMonth ,int sYear, int eDay ,int eMonth ,int eYear) {
 
 	if (!validateDate(sDay, sMonth, sYear, eDay, eMonth, eYear)) {
         System.out.println("Invalid date. Please try again.");
         return false ;
     }
 	numOfDays= days;
-	room= R;
+	this.room= room;
 	startDay = sDay;
     startMonth = sMonth;
     startYear = sYear;
