@@ -1,9 +1,11 @@
 package java113P1;
 
+
 public abstract class Room {
 private int roomNum;
 private boolean available ;
 protected double price ;
+private boolean isBooked;
 
 
 public Room(int roomNum , double price ) {
@@ -41,8 +43,12 @@ public double getPrice() {
 public void setPrice(double price) {
 	this.price = price;
 }
-
-
+public boolean isBooked() {
+	return isBooked;
+}
+public void setBooked(boolean booked) {
+	this.isBooked= booked;
+}
 
 
 }
