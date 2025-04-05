@@ -1,161 +1,173 @@
 package java113P1;
 
-	
-	
-	public class Hotel {
-	
-	private String HotelName;
-	 Room[] roomList;
-	 Booking[] bookingList;
-	private int numOfRooms;
-	private int numOfBooking;
-	
-	
-	public Hotel(String Name, int number) {
-		roomList=new Room[50];
-		bookingList=new Booking [number];
-		HotelName = Name;
-		numOfBooking = 0;
-		numOfRooms=0;
-	}
-	
-	
-	public boolean addRoom (Room R) {
-		if(numOfRooms<roomList.length) {
-			roomList[numOfRooms++]=R;
-			return true;}
-		return false;}
-	
-	public boolean deleteRoom(int no ) {
-		for (int i=0;i<numOfRooms;i++)
-		if (roomList[i].getRoomNum()==no) {
-			if(roomList[i].isAvailable()==true) {
-				for(int j=i;j<numOfRooms-1;j++)
-					roomList[j]=roomList[j+1];
-				numOfRooms--;
-				roomList[numOfRooms]=null;
-				return true;
-			}
-			else 
-				System.out.println("this room is booked !");
-			}
-			return false;
-		
-		
-	}
-	
-	public boolean addBooking(Booking B) {
-		if(numOfBooking<bookingList.length) {
-			bookingList[numOfBooking++]=new Booking (B);
-			return true;}
-		return false;
-	}
 
-	public boolean cancelBooking (String id,int roomNum) {
-		for(int i=0;i<numOfBooking ;i++) {
-			if (bookingList[i].getID().equals(id)&&bookingList[i].getRoom().getRoomNum()==roomNum)
-			{
-				bookingList[i].checkOut();
-				bookingList[i]=bookingList[numOfBooking-1];
-				numOfBooking--;
-				bookingList[numOfBooking]=null;
-				return true;
-			}
+
+public class Hotel {
+
+private String HotelName;
+ Room[] roomList;
+ Booking[] bookingList;
+private int numOfRooms;
+private int numOfBooking;
+
+
+public Hotel(String Name, int number) {
+	roomList=new Room[50];
+	bookingList=new Booking [number];
+	HotelName = Name;
+	numOfBooking = 0;
+	numOfRooms=0;
+}
+
+
+public boolean addRoom (Room R) {
+	if(numOfRooms<roomList.length) {
+		roomList[numOfRooms++]=R;
+		return true;}
+	return false;}
+
+public boolean deleteRoom(int no ) {
+	for (int i=0;i<numOfRooms;i++)
+	if (roomList[i].getRoomNum()==no) {
+		if(roomList[i].isAvailable()==true) {
+			for(int j=i;j<numOfRooms-1;j++)
+				roomList[j]=roomList[j+1];
+			numOfRooms--;
+			roomList[numOfRooms]=null;
+			return true;
+		}
+		else 
+			System.out.println("this room is booked !");
 		}
 		return false;
+	
+	
+}
+
+public boolean addBooking(Booking B) {
+	if(numOfBooking<bookingList.length) {
+		bookingList[numOfBooking++]=new Booking (B);
+		return true;}
+	return false;
+}
+
+public boolean cancelBooking(String id, int roomNum) {
+    for (int i = 0; i < numOfBooking; i++) {
+        if (bookingList[i].getID().equals(id) && bookingList[i].getRoom().getRoomNum() == roomNum) {
+            if (bookingList[i].isCheckedOut()) {
+                System.out.println("Cannot cancel booking as it has already been checked out.");
+                return false;
+            }
+            if (bookingList[i].isCancelled()) {
+                System.out.println("This booking has already been cancelled.");
+                return false;
+            }
+
+            bookingList[i].cancelBooking(); 
+            for (int j = i; j < numOfBooking - 1; j++) {
+                bookingList[j] = bookingList[j + 1];
+            }
+            numOfBooking--;
+            bookingList[numOfBooking] = null;
+            return true;
+        }}
+   
+    System.out.println("No booking found to cancel.");
+    return false;
+    
+}
+public Booking findBooking (String id,int roomNum) {
+	for(int i=0;i<numOfBooking ;i++) {
+		if (bookingList[i].getID().equals(id)&&bookingList[i].getRoom().getRoomNum()==roomNum) 
+	return bookingList[i];}
 		
-	}
-	public Booking findBooking (String id,int roomNum) {
-		for(int i=0;i<numOfBooking ;i++) {
-			if (bookingList[i].getID().equals(id)&&bookingList[i].getRoom().getRoomNum()==roomNum) 
-		return bookingList[i];}
+		return null;
+}
+
+public Room findRoom (int roomNo) {
+	for (int i=0 ;i<numOfRooms;i++)
+		if (roomList[i].getRoomNum()==roomNo)
+			return roomList[i];
 			
 			return null;
-	}
 	
-	public Room findRoom (int roomNo) {
-		for (int i=0 ;i<numOfRooms;i++)
-			if (roomList[i].getRoomNum()==roomNo)
-				return roomList[i];
-				
-				return null;
-		
-	}
+}
 
-	public StandardRoom[] getStandard() {
-		StandardRoom[] list=new StandardRoom[numOfRooms];
-		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) 
-			if(roomList[i] instanceof StandardRoom )
-				list[j++]=(StandardRoom) roomList[i];
-			return list;
-		
-	}
+public StandardRoom[] getStandard() {
+	StandardRoom[] list=new StandardRoom[numOfRooms];
+	int j=0 ;
+	for (int i=0;i<numOfRooms;i++) 
+		if(roomList[i] instanceof StandardRoom )
+			list[j++]=(StandardRoom) roomList[i];
+		return list;
 	
-	public Suite[] getSuites() {
-		Suite [] list=new Suite[numOfRooms];
-		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) 
-			if(roomList[i] instanceof Suite )
-				list[j++]=(Suite) roomList[i];
-			return list;
-		}
-		
-	
-	
-	public DeluxeSuite[] getSuites(int nOfMR) {
-		DeluxeSuite [] list=new DeluxeSuite[numOfRooms];
-		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) 
-			if(roomList[i] instanceof DeluxeSuite && ((DeluxeSuite) roomList[i]).getNumOfMoreRooms()>=nOfMR)
-				list[j++]=(DeluxeSuite) roomList[i];
-			return list;
-		}
-	public ExecutiveSuite[] getSuites(String meetingSize) {
-		ExecutiveSuite [] list=new ExecutiveSuite[numOfRooms];
-		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) 
-			if(roomList[i] instanceof ExecutiveSuite && ((ExecutiveSuite) roomList[i]).getMeetingRoomSize().equalsIgnoreCase(meetingSize))
-				list[j++]=(ExecutiveSuite) roomList[i];
-			return list;
-		}	
-	
-	public Room[] getAvailableRooms() {
-		Room [] list=new Room[numOfRooms];
-		int j=0 ;
-		for (int i=0;i<numOfRooms;i++) 
-			if(roomList[i].isAvailable() )
-				list[j++]= roomList[i];
-			return list;
-		
-		
-	}
-	public boolean isOverlapping(Room room, int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
-	    for (int i = 0; i < numOfBooking; i++) {
-	        Booking b = bookingList[i];
+}
 
-	      
-	        if (b.getRoom().getRoomNum() == room.getRoomNum()) {
-	            
-	           
-	            if (!((sYear > b.getEndYear()) || 
-	                  (sYear == b.getEndYear() && sMonth > b.getEndMonth()) || 
-	                  (sYear == b.getEndYear() && sMonth == b.getEndMonth() && sDay >= b.getEndDay()) ||
+public Suite[] getSuites() {
+	Suite [] list=new Suite[numOfRooms];
+	int j=0 ;
+	for (int i=0;i<numOfRooms;i++) 
+		if(roomList[i] instanceof Suite )
+			list[j++]=(Suite) roomList[i];
+		return list;
+	}
+	
 
-	                  (eYear < b.getStartYear()) || 
-	                  (eYear == b.getStartYear() && eMonth < b.getStartMonth()) || 
-	                  (eYear == b.getStartYear() && eMonth == b.getStartMonth() && eDay < b.getStartDay()))) {
-	                return true; 
-	            }
-	        }
-	    }
-	    return false; 
+
+public DeluxeSuite[] getSuites(int nOfMR) {
+	DeluxeSuite [] list=new DeluxeSuite[numOfRooms];
+	int j=0 ;
+	for (int i=0;i<numOfRooms;i++) 
+		if(roomList[i] instanceof DeluxeSuite && ((DeluxeSuite) roomList[i]).getNumOfMoreRooms()>=nOfMR)
+			list[j++]=(DeluxeSuite) roomList[i];
+		return list;
 	}
-	public int getNumOfOfbooking () {
-		return numOfBooking;
-		
-	}
-	public Booking[] getBookingList(){
-		return bookingList;
-	}
+public ExecutiveSuite[] getSuites(String meetingSize) {
+	ExecutiveSuite [] list=new ExecutiveSuite[numOfRooms];
+	int j=0 ;
+	for (int i=0;i<numOfRooms;i++) 
+		if(roomList[i] instanceof ExecutiveSuite && ((ExecutiveSuite) roomList[i]).getMeetingRoomSize().equalsIgnoreCase(meetingSize))
+			list[j++]=(ExecutiveSuite) roomList[i];
+		return list;
+	}	
+
+public Room[] getAvailableRooms() {
+	Room [] list=new Room[numOfRooms];
+	int j=0 ;
+	for (int i=0;i<numOfRooms;i++) 
+		if(roomList[i].isAvailable() )
+			list[j++]= roomList[i];
+		return list;
+	
+	
+}
+public boolean isOverlapping(Room room, int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
+    for (int i = 0; i < numOfBooking; i++) {
+        Booking b = bookingList[i];
+
+      
+        if (b.getRoom().getRoomNum() == room.getRoomNum()) {
+            
+           
+            if (!((sYear > b.getEndYear()) || 
+                  (sYear == b.getEndYear() && sMonth > b.getEndMonth()) || 
+                  (sYear == b.getEndYear() && sMonth == b.getEndMonth() && sDay >= b.getEndDay()) ||
+
+                  (eYear < b.getStartYear()) || 
+                  (eYear == b.getStartYear() && eMonth < b.getStartMonth()) || 
+                  (eYear == b.getStartYear() && eMonth == b.getStartMonth() && eDay < b.getStartDay()))) {
+                return true; 
+            }
+        }
+    }
+    return false; 
+}
+public int getNumOfOfbooking () {
+	return numOfBooking;
+	
+}
+public Booking[] getBookingList(){
+	return bookingList;
+}
+
 }
