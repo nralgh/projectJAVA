@@ -1,7 +1,6 @@
 package java113P1;
 
 import java.util.Scanner ;
-
 public class TestHotel {
 static Scanner input =new Scanner (System.in);
 //String hotelName,number
@@ -275,8 +274,4 @@ static Scanner input =new Scanner (System.in);
 		}
 	
 
-		
-		
-		
-	
 	}
