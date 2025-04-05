@@ -9,6 +9,9 @@ public class Booking {
 	private int endDay ,endMonth , endYear;
 	private int numOfDays;
 	private double bill;
+	private boolean isCheckedOut=false;
+	private boolean isCancelled=false;
+	
 	
 	public Booking (String name, String phoneNumber, String ID) {
 		this.name =name;
@@ -55,14 +58,29 @@ public boolean checkIn(Hotel hotel, Room room, int days, int sDay, int sMonth, i
     return true;
 }
 public void checkOut() {
-	if (room.isAvailable()==true)
-		System.out.println("The room is now available");
-	else {
-		room.setAvailable(true);
-		System.out.println("check-out sucessful, Thank you for staying with us!");
-		
-	}
-	
+    if (isCancelled) {
+        System.out.println("The booking has already been cancelled, cannot check out.");
+    } else if (isCheckedOut) {
+        System.out.println("You have already checked out.");
+    } else {
+        room.setAvailable(true);  
+        room.setBooked(false);  
+        isCheckedOut = true;
+        System.out.println("Check-out successful, Thank you for staying with us!");
+    }
+}
+
+public void cancelBooking() {
+    if (isCheckedOut) {
+        System.out.println("You cannot cancel a booking after check-out.");
+    } else if (isCancelled) {
+        System.out.println("This booking has already been cancelled.");
+    } else {
+        room.setAvailable(true);  
+        room.setBooked(false); 
+        isCancelled = true;
+       
+    }
 }
 private boolean validateDate(int sDay, int sMonth, int sYear, int eDay, int eMonth, int eYear) {
    
@@ -166,6 +184,11 @@ public int getEndMonth() {
 public int getEndYear() {
 	return endYear;
 }
-
-
+public boolean isCheckedOut() {
+	return isCheckedOut;
 }
+public boolean isCancelled() {
+	return isCancelled;
+}
+}
+
