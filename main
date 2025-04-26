@@ -4,7 +4,7 @@ import java.util.Scanner ;
 public class TestHotel {
 static Scanner input =new Scanner (System.in);
 //String hotelName,number
-		static Hotel hotel =new Hotel("Holiday Hotel",100);
+		static Hotel hotel =new Hotel("Holiday Hotel",50);
 		public static void main(String[] args) {
 
 			for (int i = 1; i <= 20; i++) {
