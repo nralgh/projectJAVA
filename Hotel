@@ -218,8 +218,8 @@ public void saveInfo(){
        ObjectOutputStream oOutputS2= new ObjectOutputStream(fOutputS2);
        
        oOutputS2.writeInt(numOfBooking);
-       oOutputS.writeObject(bookingList);
-       oOutputS.close();
+       oOutputS2.writeObject(bookingList);
+       oOutputS2.close();
        
         
     } catch (IOException e){
@@ -238,7 +238,7 @@ public void saveInfo(){
           FileInputStream  fInput2 =new FileInputStream (f2);
           ObjectInputStream oInputS2= new ObjectInputStream(fInput2);
           
-          this.numOfBooking=oInputS2.readInt();
+          numOfBooking=oInputS2.readInt();
           bookingList= (Booking[]) oInputS2.readObject();
           oInputS2.close();
           
