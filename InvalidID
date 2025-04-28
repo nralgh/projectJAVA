@@ -1,0 +1,7 @@
+
+public class InvalidID extends Exception{
+    public invalidID (String s){
+        super(s);
+    }
+   
+}
