@@ -1,6 +1,6 @@
-package java113P1;
 
-public class Booking {
+import java.io.Serializable;
+public class Booking implements Serializable {
 	private String name ;
 	private String phoneNumber;
 	private String ID;
@@ -191,4 +191,3 @@ public boolean isCancelled() {
 	return isCancelled;
 }
 }
-
