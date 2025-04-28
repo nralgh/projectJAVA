@@ -1,1 +1,5 @@
-w
+public class InvalidPhoneNumber extends Exception{
+    public invalidPhoneNumber (String s){
+        super(s);
+    }
+}
