@@ -1,0 +1,6 @@
+
+public interface NewInterface {
+    
+public void saveInfo();
+ public void readData () ;
+}
