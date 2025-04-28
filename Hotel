@@ -1,47 +1,72 @@
-package java113P1;
-
-
-
-public class Hotel {
-
-private String HotelName;
- Room[] roomList;
+import java.io.*;
+public class Hotel implements NewInterface {
+private String hName;
+ Node headRoom;
  Booking[] bookingList;
-private int numOfRooms;
 private int numOfBooking;
+int maxRoom =50;
 
 
-public Hotel(String Name, int number) {
-	roomList=new Room[50];
-	bookingList=new Booking [number];
-	HotelName = Name;
-	numOfBooking = 0;
-	numOfRooms=0;
+public Hotel(String name, int maxBooking) {
+	hName=name;
+        headRoom= null;
+        bookingList=new Booking[maxBooking];
+        numOfBooking=0;
 }
 
 
-public boolean addRoom (Room R) {
-	if(numOfRooms<roomList.length) {
-		roomList[numOfRooms++]=R;
-		return true;}
-	return false;}
+public int countRoom () {
+	if(headRoom==null) 
+            return 0;
+        int count =0;
+        Node current=headRoom;
+        while (current !=null)
+        {
+            count++;
+            current =current.getNext();
+        }
+        return count ;
+            
+        }
+	public boolean addRoom (Room R)	{
+            if (countRoom ()< maxRoom){
+                Node n = new Node (R);
+            n.setNext(headRoom);
+            headRoom=n;
+            return true;}
+            return false;
+        }
 
 public boolean deleteRoom(int no ) {
-	for (int i=0;i<numOfRooms;i++)
-	if (roomList[i].getRoomNum()==no) {
-		if(roomList[i].isAvailable()==true) {
-			for(int j=i;j<numOfRooms-1;j++)
-				roomList[j]=roomList[j+1];
-			numOfRooms--;
-			roomList[numOfRooms]=null;
+	if (headRoom==null)
+            return false;
+        if (headRoom.getData().getRoomNum()==no ){
+		Room temp =headRoom.getData();
+                if ( temp.isAvailable()==false){
+                    System.out.println (" the room is booked by person");
+                    return false;
+                }
+                 headRoom=headRoom.getNext();
 			return true;
 		}
+Node previous =headRoom;
+Node current =headRoom.getNext();
+while (current!=null){
+    if (current.getData().getRoomNum()==no){
+        if (current.getData().isAvailable()==true ){
+         previous.setNext(current.getNext());
+        return true;}
 		else 
 			System.out.println("this room is booked !");
-		}
+		
 		return false;
-	
-	
+}
+else {
+    previous= previous.getNext();
+    current=current.getNext();
+}
+}
+return false;
 }
 
 public boolean addBooking(Booking B) {
@@ -85,58 +110,76 @@ public Booking findBooking (String id,int roomNum) {
 }
 
 public Room findRoom (int roomNo) {
-	for (int i=0 ;i<numOfRooms;i++)
-		if (roomList[i].getRoomNum()==roomNo)
-			return roomList[i];
-			
-			return null;
-	
+		if (headRoom==null)
+		return null;
+                Node current =headRoom;
+                while (current !=null){
+                    if (current.getData().getRoomNum()==roomNo)
+                        return current.getData();
+                    current=current.getNext();
+                }
+	return null;
 }
 
 public StandardRoom[] getStandard() {
-	StandardRoom[] list=new StandardRoom[numOfRooms];
+	StandardRoom[] list=new StandardRoom[countRoom()];
 	int j=0 ;
-	for (int i=0;i<numOfRooms;i++) 
-		if(roomList[i] instanceof StandardRoom )
-			list[j++]=(StandardRoom) roomList[i];
-		return list;
-	
+        
+        Node current =headRoom;
+        while (current!=null){
+            if (current.getData() instanceof StandardRoom)
+                list[j++]=(StandardRoom) current.getData();
+            current=current.getNext();
+        }
+        return list;
 }
-
 public Suite[] getSuites() {
-	Suite [] list=new Suite[numOfRooms];
+	Suite [] list=new Suite[countRoom()];
 	int j=0 ;
-	for (int i=0;i<numOfRooms;i++) 
-		if(roomList[i] instanceof Suite )
-			list[j++]=(Suite) roomList[i];
-		return list;
+        Node current =headRoom;
+	while (current !=null){
+            if (current.getData() instanceof Suite)
+                list[j++]=(Suite )current.getData();
+            current=current.getNext();
+        }
+        return list;
 	}
 	
 
 
 public DeluxeSuite[] getSuites(int nOfMR) {
-	DeluxeSuite [] list=new DeluxeSuite[numOfRooms];
+	DeluxeSuite [] list=new DeluxeSuite[countRoom()];
 	int j=0 ;
-	for (int i=0;i<numOfRooms;i++) 
-		if(roomList[i] instanceof DeluxeSuite && ((DeluxeSuite) roomList[i]).getNumOfMoreRooms()>=nOfMR)
-			list[j++]=(DeluxeSuite) roomList[i];
+        
+        Node current =headRoom;
+while (current!=null){
+	if(current.getData()instanceof DeluxeSuite && ((DeluxeSuite) current.getData()).getNumOfMoreRooms()>=nOfMR)
+	list[j++]=(DeluxeSuite) current.getData();
+           current =current.getNext();
+               }
 		return list;
 	}
 public ExecutiveSuite[] getSuites(String meetingSize) {
-	ExecutiveSuite [] list=new ExecutiveSuite[numOfRooms];
+	ExecutiveSuite [] list=new ExecutiveSuite[countRoom()];
 	int j=0 ;
-	for (int i=0;i<numOfRooms;i++) 
-		if(roomList[i] instanceof ExecutiveSuite && ((ExecutiveSuite) roomList[i]).getMeetingRoomSize().equalsIgnoreCase(meetingSize))
-			list[j++]=(ExecutiveSuite) roomList[i];
-		return list;
+	 Node current =headRoom;
+while (current!=null){
+		if(current.getData() instanceof ExecutiveSuite && ((ExecutiveSuite) current.getData()).getMeetingRoomSize().equalsIgnoreCase(meetingSize))
+			list[j++]=(ExecutiveSuite) current.getData();
+    current =current.getNext();
+}
+return list;
 	}	
 
 public Room[] getAvailableRooms() {
-	Room [] list=new Room[numOfRooms];
+	Room [] list=new Room[countRoom()];
 	int j=0 ;
-	for (int i=0;i<numOfRooms;i++) 
-		if(roomList[i].isAvailable() )
-			list[j++]= roomList[i];
+  Node current =headRoom;
+while (current!=null){
+		if(current.getData().isAvailable() )
+			list[j++]= current.getData();
+                  current =current.getNext();
+}
 		return list;
 	
 	
@@ -162,6 +205,54 @@ public boolean isOverlapping(Room room, int sDay, int sMonth, int sYear, int eDa
     }
     return false; 
 }
+
+public void saveInfo(){
+    try {
+        File out =new File ("Room.dat");
+        FileOutputStream fOutputS= new FileOutputStream(out);
+        ObjectOutputStream oOutputS=new ObjectOutputStream(fOutputS);
+       oOutputS.writeObject(headRoom);
+       oOutputS.close();
+       File  out2=new File ("bookingList.dat");
+       FileOutputStream fOutputS2= new FileOutputStream(out2);
+       ObjectOutputStream oOutputS2= new ObjectOutputStream(fOutputS2);
+       
+       oOutputS2.writeInt(numOfBooking);
+       oOutputS.writeObject(bookingList);
+       oOutputS.close();
+       
+        
+    } catch (IOException e){
+        System.out.println(e.toString ());
+                
+    }
+}
+  public void readData ()  {
+      try{
+          File f= new File ("Room.dat");
+          FileInputStream  fInput =new FileInputStream (f);
+          ObjectInputStream oInputS= new ObjectInputStream(fInput);
+          headRoom= (Node) oInputS.readObject();
+          oInputS.close();
+             File f2= new File ("bookingList.dat");
+          FileInputStream  fInput2 =new FileInputStream (f2);
+          ObjectInputStream oInputS2= new ObjectInputStream(fInput2);
+          
+          this.numOfBooking=oInputS2.readInt();
+          bookingList= (Booking[]) oInputS2.readObject();
+          oInputS2.close();
+          
+          System.out.println(" data in files are loaded");
+      }
+      catch (ClassNotFoundException ex){
+          System.out.println(ex.toString());
+      }
+catch (IOException e){
+    System.out.println(e.toString());
+      }
+  }    
+        
+        
 public int getNumOfOfbooking () {
 	return numOfBooking;
 	
