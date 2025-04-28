@@ -1,0 +1,22 @@
+import java.io.Serializable ;
+
+public class Node implements Serializable {
+    private Room data;
+    private Node next;
+    public Node (Room R ){
+        data= R;
+        next =null;
+    }
+    public void setNext (Node nextP){
+        next= nextP;
+    }
+    public Node getNext(){
+        return next;
+    }
+    public void setData(Room r){
+       data=r; 
+    }
+    public Room getData(){
+        return data;
+    }
+}
