@@ -1,5 +1,5 @@
-
 import java.io.Serializable;
+import javax.swing.JOptionPane;
 public class Booking implements Serializable {
 	private String name ;
 	private String phoneNumber;
@@ -59,14 +59,14 @@ public boolean checkIn(Hotel hotel, Room room, int days, int sDay, int sMonth, i
 }
 public void checkOut() {
     if (isCancelled) {
-        System.out.println("The booking has already been cancelled, cannot check out.");
+        JOptionPane.showMessageDialog(null ,"The booking has already been cancelled, cannot check out.");
     } else if (isCheckedOut) {
-        System.out.println("You have already checked out.");
+        JOptionPane.showMessageDialog(null ,"You have already checked out.");
     } else {
         room.setAvailable(true);  
         room.setBooked(false);  
         isCheckedOut = true;
-        System.out.println("Check-out successful, Thank you for staying with us!");
+        JOptionPane.showMessageDialog(null ,"Check-out successful, Thank you for staying with us!");
     }
 }
 
@@ -191,3 +191,5 @@ public boolean isCancelled() {
 	return isCancelled;
 }
 }
+
+	
