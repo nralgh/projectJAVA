@@ -1,4 +1,5 @@
 import java.io.*;
+import javax.swing.JOptionPane;
 public class Hotel implements NewInterface {
 private String hName;
  Node headRoom;
@@ -220,7 +221,7 @@ public void saveInfo(){
        oOutputS2.writeInt(numOfBooking);
        oOutputS2.writeObject(bookingList);
        oOutputS2.close();
-       
+        
         
     } catch (IOException e){
         System.out.println(e.toString ());
@@ -242,7 +243,7 @@ public void saveInfo(){
           bookingList= (Booking[]) oInputS2.readObject();
           oInputS2.close();
           
-          System.out.println(" data in files are loaded");
+          JOptionPane.showMessageDialog(null, " data in files are loaded");
       }
       catch (ClassNotFoundException ex){
           System.out.println(ex.toString());
