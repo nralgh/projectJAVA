@@ -61,6 +61,8 @@ hotel.addRoom(executive3);
 hotel.addRoom(executive4);
 hotel.addRoom(executive5);
 }
+firstFrame frame=new firstFrame();
+frame.setVisible(true);
 //menu 
 int choice ; 
 do {
